@@ -3,7 +3,7 @@
   import { AppBar, AppShell, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
   import { LightSwitch } from '@skeletonlabs/skeleton';
   import { page } from '$app/stores';
-  import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUserCircle } from '@tabler/icons-svelte';
+  //import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUserCircle } from '@tabler/icons-svelte';
 </script>
 
 <AppShell>
@@ -24,27 +24,27 @@
     >
 
       <TabAnchor href="/" selected={$page.url.pathname === '/'}>
-        <svelte:fragment slot="lead"><div class="flex justify-center">  <IconHome />  </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center">    </div></svelte:fragment>
         <span>Home</span> 
       </TabAnchor>
     
       <TabAnchor href="/about" selected={$page.url.pathname === '/about'}>
-        <svelte:fragment slot="lead"><div class="flex justify-center">  <IconUserCircle />  </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center">   </div></svelte:fragment>
         <span>About</span>
       </TabAnchor>
     
       <TabAnchor href="/work" selected={$page.url.pathname === '/work'}>
-        <svelte:fragment slot="lead"><div class="flex justify-center">  <IconBriefcase />  </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center">   </div></svelte:fragment>
         <span>Work</span>
       </TabAnchor>
 
       <TabAnchor href="https://github.com/barosmun">
-        <svelte:fragment slot="lead"><div class="flex justify-center">  <IconBrandGithub />  </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center">    </div></svelte:fragment>
         <span>Github</span>
       </TabAnchor>
       
       <TabAnchor href="https://www.linkedin.com/in/barrett-osmundson/">
-        <svelte:fragment slot="lead"><div class="flex justify-center">  <IconBrandLinkedin />  </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center">    </div></svelte:fragment>
         <span>LinkedIn</span>
       </TabAnchor>
     </TabGroup>
