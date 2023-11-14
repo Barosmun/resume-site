@@ -1,7 +1,7 @@
 <script>
   import "../app.postcss";
   import { AppBar, AppShell, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
-  import { LightSwitch } from '@skeletonlabs/skeleton';
+  import { base } from "$app/paths";
   import { page } from '$app/stores';
   //import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUserCircle } from '@tabler/icons-svelte';
 </script>
@@ -23,17 +23,17 @@
     padding="px-4 py-2 lg:px-8"
     >
 
-      <TabAnchor href="/" selected={$page.url.pathname === '/'}>
+      <TabAnchor href={base + '/'} selected={$page.url.pathname === '/'}>
         <svelte:fragment slot="lead"><div class="flex justify-center">    </div></svelte:fragment>
         <span>Home</span> 
       </TabAnchor>
     
-      <TabAnchor href="/about" selected={$page.url.pathname === '/about'}>
+      <TabAnchor href={base + '/about'} selected={$page.url.pathname === '/about'}>
         <svelte:fragment slot="lead"><div class="flex justify-center">   </div></svelte:fragment>
         <span>About</span>
       </TabAnchor>
     
-      <TabAnchor href="/work" selected={$page.url.pathname === '/work'}>
+      <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work'}>
         <svelte:fragment slot="lead"><div class="flex justify-center">   </div></svelte:fragment>
         <span>Work</span>
       </TabAnchor>
