@@ -4,6 +4,8 @@
   import { base } from "$app/paths";
   import { page } from '$app/stores';
   import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUser, IconUserCircle } from '@tabler/icons-svelte';
+
+  console.log($page.url.pathname);
 </script>
 
 <AppShell>
