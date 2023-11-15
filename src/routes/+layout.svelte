@@ -4,8 +4,6 @@
   import { base } from "$app/paths";
   import { page } from '$app/stores';
   import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUser, IconUserCircle } from '@tabler/icons-svelte';
-
-  console.log($page.url.pathname);
 </script>
 
 <AppShell>
@@ -25,17 +23,17 @@
     padding="px-4 py-2 lg:px-8"
     >
 
-      <TabAnchor href={base + '/'} selected={$page.url.pathname === '/'}>
+      <TabAnchor href={base + '/'} selected={$page.url.pathname === '/' || $page.url.pathname === '/resume-site'}>
         <svelte:fragment slot="lead"><div class="flex justify-center"> <IconHome /> </div></svelte:fragment>
         <span>Home</span> 
       </TabAnchor>
     
-      <TabAnchor href={base + '/about'} selected={$page.url.pathname === '/about'}>
+      <TabAnchor href={base + '/about'} selected={$page.url.pathname === '/about' || $page.url.pathname === '/resume-site/about'}>
         <svelte:fragment slot="lead"><div class="flex justify-center"> <IconUser /> </div></svelte:fragment>
         <span>About</span>
       </TabAnchor>
     
-      <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work'}>
+      <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work'}>
         <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBriefcase /> </div></svelte:fragment>
         <span>Work</span>
       </TabAnchor>
