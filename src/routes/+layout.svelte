@@ -3,7 +3,12 @@
   import { AppBar, AppShell, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
   import { base } from "$app/paths";
   import { page } from '$app/stores';
-  import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUser, IconUserCircle } from '@tabler/icons-svelte';
+  // import { IconBrandGithub, IconBrandLinkedin, IconBriefcase, IconHome, IconMail, IconUser, IconUserCircle } from 'virtual:icons/tabler';
+  import IconHome from '~icons/tabler/home'
+  import IconUser from '~icons/tabler/user'
+  import IconBriefcase from '~icons/tabler/briefcase'
+  import IconBrandGithub from '~icons/tabler/brand-github'
+  import IconBrandLinkedin from '~icons/tabler/brand-linkedin'
 </script>
 
 <AppShell>
@@ -24,27 +29,27 @@
     >
 
       <TabAnchor href={base + '/'} selected={$page.url.pathname === '/' || $page.url.pathname === '/resume-site'}>
-        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconHome /> </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconHome width="32" height="32" /> </div></svelte:fragment>
         <span>Home</span> 
       </TabAnchor>
     
       <TabAnchor href={base + '/about'} selected={$page.url.pathname === '/about' || $page.url.pathname === '/resume-site/about'}>
-        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconUser /> </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconUser width="32" height="32"/> </div></svelte:fragment>
         <span>About</span>
       </TabAnchor>
     
       <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work'}>
-        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBriefcase /> </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBriefcase width="32" height="32"/> </div></svelte:fragment>
         <span>Work</span>
       </TabAnchor>
 
       <TabAnchor href="https://github.com/barosmun">
-        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandGithub /> </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandGithub width="32" height="32"/> </div></svelte:fragment>
         <span>Github</span>
       </TabAnchor>
       
       <TabAnchor href="https://www.linkedin.com/in/barrett-osmundson/">
-        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandLinkedin /> </div></svelte:fragment>
+        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandLinkedin width="32" height="32"/> </div></svelte:fragment>
         <span>LinkedIn</span>
       </TabAnchor>
     </TabGroup>

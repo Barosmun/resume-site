@@ -10,6 +10,8 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
+    "@iconify-json/simple-icons": "^1.1.81",
+    "@iconify-json/tabler": "^1.1.100",
     "@skeletonlabs/skeleton": "^2.5.0",
     "@skeletonlabs/tw-plugin": "^0.2.4",
     "@sveltejs/adapter-auto": "^2.0.0",
@@ -24,10 +26,8 @@
     "tailwindcss": "^3.3.2",
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
+    "unplugin-icons": "^0.17.4",
     "vite": "^4.4.2"
   },
-  "type": "module",
-  "dependencies": {
-    "@tabler/icons-svelte": "^2.40.0"
-  }
+  "type": "module"
 }

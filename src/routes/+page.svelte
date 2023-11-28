@@ -1,7 +1,13 @@
 <script lang="ts">
   import { Ratings } from '@skeletonlabs/skeleton';
-  import { IconBrandBootstrap, IconBrandCSharp, IconBrandCouchdb, IconBrandCpp, IconBrandCss3, IconBrandGit, IconBrandGolang, IconBrandMongodb, IconBrandPython, IconBrandReact, IconBrandTailwind, IconBrandVue, IconSql, IconStarFilled } from '@tabler/icons-svelte';
-  import { IconBrandAngular, IconBrandJavascript, IconBrandSvelte, IconBrandTypescript, IconHtml} from '@tabler/icons-svelte';
+  import IconBrandJavascript from '~icons/tabler/brand-javascript'
+  import IconBrandTypescript from '~icons/tabler/brand-typescript'
+  import IconStarFilled from '~icons/tabler/star-filled'
+  import IconBrandAngular from '~icons/tabler/brand-angular'
+  import IconBrandSvelte from '~icons/tabler/brand-svelte'
+  import IconBrandGamemaker from '~icons/simple-icons/gamemaker'
+  
+
 
   var skills = [
       {
@@ -25,65 +31,70 @@
           stars: 2
       },
       {
-          icon: IconSql,
-          name: "sql",
-          stars: 1
-      },
-      {
-          icon: IconHtml,
-          name: "html",
+          icon: IconBrandGamemaker,
+          name: "gamemaker",
           stars: 3
       },
-      {
-          icon: IconBrandCss3,
-          name: "css",
-          stars: 3
-      },
-      {
-          icon: IconBrandMongodb,
-          name: "mongo",
-          stars: 1
-      },
-      {
-          icon: IconBrandCpp,
-          name: "c++",
-          stars: 1
-      },
-      {
-          icon: IconBrandGolang,
-          name: "go",
-          stars: 2
-      },
-      {
-          icon: IconBrandBootstrap,
-          name: "bootstrap",
-          stars: 3
-      },
-      {
-          icon: IconBrandTailwind,
-          name: "tailwind",
-          stars: 2
-      },
-      {
-          icon: IconBrandCouchdb,
-          name: "couchdb",
-          stars: 1
-      },
-      {
-          icon: IconBrandPython,
-          name: "python",
-          stars: 2
-      },
-      {
-          icon: IconBrandReact,
-          name: "react",
-          stars: 1
-      },
-      {
-          icon: IconBrandVue,
-          name: "vue",
-          stars: 1
-      },
+      // {
+      //     icon: IconSql,
+      //     name: "sql",
+      //     stars: 1
+      // },
+      // {
+      //     icon: IconHtml,
+      //     name: "html",
+      //     stars: 3
+      // },
+      // {
+      //     icon: IconBrandCss3,
+      //     name: "css",
+      //     stars: 3
+      // },
+      // {
+      //     icon: IconBrandMongodb,
+      //     name: "mongo",
+      //     stars: 1
+      // },
+      // {
+      //     icon: IconBrandCpp,
+      //     name: "c++",
+      //     stars: 1
+      // },
+      // {
+      //     icon: IconBrandGolang,
+      //     name: "go",
+      //     stars: 2
+      // },
+      // {
+      //     icon: IconBrandBootstrap,
+      //     name: "bootstrap",
+      //     stars: 3
+      // },
+      // {
+      //     icon: IconBrandTailwind,
+      //     name: "tailwind",
+      //     stars: 2
+      // },
+      // {
+      //     icon: IconBrandCouchdb,
+      //     name: "couchdb",
+      //     stars: 1
+      // },
+      // {
+      //     icon: IconBrandPython,
+      //     name: "python",
+      //     stars: 2
+      // },
+      // {
+      //     icon: IconBrandReact,
+      //     name: "react",
+      //     stars: 1
+      // },
+      // {
+      //     icon: IconBrandVue,
+      //     name: "vue",
+      //     stars: 1
+      // },
       
   ]
 
@@ -122,11 +133,11 @@
   {#each skills as skill}
       <div class="card px-8 pt-4 pb-4 flex flex-col justify-center items-center">
         <span class="mb-2">{skill.name}</span>
-        <svelte:component this={skill.icon} size={48}/>
+        <svelte:component this={skill.icon} width=48 height=48/>
         <Ratings bind:value={skill.stars} max={skill.stars} class="mt-4">
             <svelte:fragment slot="empty"></svelte:fragment>
             <svelte:fragment slot="half"></svelte:fragment>
-            <svelte:fragment slot="full"><IconStarFilled size={12} /></svelte:fragment>
+            <svelte:fragment slot="full"><IconStarFilled width=12 height=12 /></svelte:fragment>
         </Ratings>
       </div>
 	{/each}
