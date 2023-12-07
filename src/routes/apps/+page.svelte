@@ -11,8 +11,8 @@
 
 </script>
 
-<div class="card bg-surface-50-900-token rounded-none flex h-full">
-    <AppRail class="flex-0 h-full">
+<div class="card bg-surface-50-900-token rounded-none flex h-full w-full">
+    <AppRail class="flex-none h-full">
         <!-- Lead -->
         <svelte:fragment slot="lead">
             <AppRailAnchor>
@@ -24,14 +24,14 @@
             <svelte:fragment slot="lead"><div class="flex justify-center"> <IconFlagQuestion width="32" height="32" /> </div></svelte:fragment>
             <span>Flag Quiz</span>
         </AppRailTile>
-        <AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
+        <!-- <AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
             <svelte:fragment slot="lead">(icon)</svelte:fragment>
             <span>Tile 2</span>
         </AppRailTile>
         <AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3">
             <svelte:fragment slot="lead">(icon)</svelte:fragment>
             <span>Tile 3</span>
-        </AppRailTile>
+        </AppRailTile> -->
         <!-- Trail -->
         <svelte:fragment slot="trail">
             <AppRailAnchor>
@@ -39,14 +39,17 @@
             </AppRailAnchor>
         </svelte:fragment>
     </AppRail>
-    <div class="w-full flex-1 flex flex-col">
-        <AppBar class="w-full flex-0">
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <AppBar class="w-full flex-none">
             <svelte:fragment slot="lead"><IconArrowLeft width="24" height="24" /></svelte:fragment>
             <h4 class="h4">Flag Quiz</h4>
             <svelte:fragment slot="trail">(actions)</svelte:fragment>
         </AppBar>
-        {#if currentTile == 0}
-            <FlagQuiz></FlagQuiz>
-        {/if}
+        <div class="w-full h-full p-4 flex-1">
+            {#if currentTile == 0}
+                <FlagQuiz></FlagQuiz>
+            {/if}
+        </div>
+       
     </div>
 </div>
