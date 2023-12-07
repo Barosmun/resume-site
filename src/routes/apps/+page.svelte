@@ -11,8 +11,8 @@
 
 </script>
 
-<div class="card bg-surface-50-900-token rounded-none flex">
-    <AppRail class="flex-0">
+<div class="card bg-surface-50-900-token rounded-none flex h-full">
+    <AppRail class="flex-0 h-full">
         <!-- Lead -->
         <svelte:fragment slot="lead">
             <AppRailAnchor>

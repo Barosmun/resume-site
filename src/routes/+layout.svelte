@@ -70,7 +70,7 @@
   </svelte:fragment>
 
   <!-- Router Slot -->
-  <div class="container px-8 md:px-12 lg:px-24 xl:px-64 py-8 mx-auto">
+  <div class="container px-8 md:px-12 lg:px-24 xl:px-64 py-8 mx-auto h-full lg:h-auto">
     <slot />
   </div>
   <!-- ---- / ---- -->

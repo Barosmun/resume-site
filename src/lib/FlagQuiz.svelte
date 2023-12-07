@@ -37,12 +37,12 @@
   {/each} -->
 
 
-  <div class="card p-4 flex flex-col justify-between items-center h-full">
-    <h4 class="h2 mb-8 flex-0 align-middle {revealed ? '' : 'placeholder py-5 animate-pulse w-1/2'}"> {revealed ? flag.name : ''} </h4>
+  <div class="card px-4 py-32 lg:py-4 flex flex-col justify-around lg:justify-between items-center h-full">
+    <h4 class="h2 mb-8 flex-0 align-middle {revealed ? '' : 'placeholder py-5 animate-pulse w-8/12 lg:w-1/2'}"> {revealed ? flag.name : ''} </h4>
 
-    <div class="flex-1 w-full bg-no-repeat bg-center bg-contain mb-8" style="background-image: url('{flag.url}');"></div>
+    <div class="flex-1 w-full bg-no-repeat bg-center bg-contain mb-8 lg:p-24" style="background-image: url('{flag.url}');"></div>
 
-    <div class="w-full flex-0 flex space-x-8 justify-center px-8">
+    <div class="w-full flex-0 flex space-x-8 justify-center px-4 lg:px-8">
       <button type="button" class="btn variant-filled py-4 w-3/4" on:click={revealed ? randomFlag : reveal}>
         <span>
           {#if revealed}
