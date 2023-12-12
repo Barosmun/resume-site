@@ -13,7 +13,8 @@
 
   // Icons
   import IconReload from '~icons/tabler/reload';
-  import IconFileDownload from '~icons/tabler/file-download';
+  import IconCopy from '~icons/tabler/copy';
+  import IconUpload from '~icons/tabler/upload';
   import { clipboard } from '@skeletonlabs/skeleton';
 
   let tiles = [tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11];
@@ -28,6 +29,7 @@
     ];
 
   let map_string = '';
+  let inputMatrix = '';
 
   let selected = 1;
 
@@ -72,6 +74,17 @@
     map_string += "\n]";
   }
 
+  function loadMatrix(){
+    var new_matrix = inputMatrix;
+    new_matrix = JSON.parse(inputMatrix);
+    
+    if( Array.isArray(new_matrix) && new_matrix.length == map.length){
+      if( Array.isArray(new_matrix[0]) && new_matrix[0].length == map[0].length){
+        map = new_matrix;
+      }
+    }
+  }
+
 </script>
 
 <div class="container flex flex-row">
@@ -88,7 +101,7 @@
       </button>
 
       <button type="button" class="btn variant-filled" use:clipboard={map_string}>
-        <span><IconFileDownload width="32" height="32" /></span>
+        <span><IconCopy width="32" height="32" /></span>
         <span>Copy Matrix</span>
       </button>
     </div>
@@ -99,6 +112,14 @@
           <img src="{tiles[tile-1]}" on:click="{() => setTile(r, c)}"/>
         {/each}
       {/each}
+    </div>
+
+    <div class="card flex flex-col content-center">
+      <button type="button" class="btn variant-filled m-2" on:click={loadMatrix}>
+        <span><IconUpload width="32" height="32" /></span>
+        <span>Load Tile Matrix</span>
+      </button>
+      <textarea bind:value={inputMatrix} class="textarea" rows="7" placeholder="Paste tile matrix here. (remove ending comma)" />
     </div>
   </div>
 
