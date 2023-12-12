@@ -5,7 +5,9 @@
 
   // Icons
   import IconFlagQuestion from '~icons/tabler/flag-question';
+  import IconGrid3x3 from '~icons/tabler/grid-3x3';
   import IconArrowLeft from '~icons/tabler/arrow-left';
+  import TileMapper from "$lib/TileMapper.svelte";
 
   let currentTile: number = 0;
 
@@ -23,6 +25,10 @@
         <AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1">
             <svelte:fragment slot="lead"><div class="flex justify-center"> <IconFlagQuestion width="32" height="32" /> </div></svelte:fragment>
             <span>Flag Quiz</span>
+        </AppRailTile>
+        <AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
+            <svelte:fragment slot="lead"><div class="flex justify-center"> <IconGrid3x3 width="32" height="32" /> </div></svelte:fragment>
+            <span>Tile Mapper</span>
         </AppRailTile>
         <!-- <AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
             <svelte:fragment slot="lead">(icon)</svelte:fragment>
@@ -48,6 +54,8 @@
         <div class="w-full h-full p-4 flex-1">
             {#if currentTile == 0}
                 <FlagQuiz></FlagQuiz>
+            {:else if currentTile == 1}
+                <TileMapper></TileMapper>
             {/if}
         </div>
        
