@@ -87,10 +87,10 @@
 
 </script>
 
-<div class="container flex flex-row">
+<div class="container flex flex-col-reverse lg:flex-row w-full">
 
   
-  <div class="flex flex-col">
+  <div class="flex flex-col w-full lg:w-9/12">
 
     <div class="card w-full px-4 py-4 flex justify-around">
       
@@ -106,12 +106,14 @@
       </button>
     </div>
 
-    <div class="card px-4 py-4 grid grid-cols-9 grid-rows-7 w-fit h-fit">
-      {#each map as row, r}
-        {#each row as tile, c}
-          <img src="{tiles[tile-1]}" on:click="{() => setTile(r, c)}"/>
+    <div class="card w-full px-4 py-4 justify-center flex">
+      <div class="grid grid-cols-9 grid-rows-7 w-fit h-fit">
+        {#each map as row, r}
+          {#each row as tile, c}
+            <img src="{tiles[tile-1]}" on:click="{() => setTile(r, c)}"/>
+          {/each}
         {/each}
-      {/each}
+      </div>
     </div>
 
     <div class="card flex flex-col content-center">
@@ -123,9 +125,9 @@
     </div>
   </div>
 
-  <div class=" card flex  px-4 py-4 flex-col space-y-1">
+  <div class=" card flex px-4 py-4 flex-row lg:flex-col space-x-1 lg:space-y-1">
     {#each tiles as tile, i}
-      <span class="flex flex-row {selected == i+1 ? 'border-solid border-2' : ''}" on:click="{() => selected = i+1}"> <img src="{tile}" width="50px" height="50px" class="mr-4"/>  TILE {i+1}</span>
+      <span class="flex flex-col lg:flex-row {selected == i+1 ? 'border-solid border-2' : ''}" on:click="{() => selected = i+1}"> <img src="{tile}" width="50px" height="50px" class="mr-4"/>  TILE {i+1}</span>
     {/each}
   </div>
 
