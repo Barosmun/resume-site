@@ -110,7 +110,9 @@
       <div class="grid grid-cols-9 grid-rows-7 w-fit h-fit">
         {#each map as row, r}
           {#each row as tile, c}
-            <img src="{tiles[tile-1]}" on:click="{() => setTile(r, c)}"/>
+            <button on:click="{() => setTile(r, c)}">
+              <img src="{tiles[tile-1]}" alt="TILE {tile}"/>
+            </button>
           {/each}
         {/each}
       </div>
@@ -127,7 +129,7 @@
 
   <div class="flex px-4 py-4 flex-row lg:flex-col space-x-1 lg:space-y-1 w-full lg:w-3/12 overflow-auto">
     {#each tiles as tile, i}
-      <span class="flex flex-col lg:flex-row {selected == i+1 ? 'border-solid border-2' : ''}" on:click="{() => selected = i+1}"> <img src="{tile}" width="50px" height="50px" class="mr-4"/>TILE {i+1}</span>
+      <button class="flex flex-col lg:flex-row {selected == i+1 ? 'border-solid border-2' : ''}" on:click="{() => selected = i+1}"> <img src="{tile}" width="50px" height="50px" class="mr-4" alt="TILE {i+1}"/>TILE {i+1}</button>
     {/each}
   </div>
 
