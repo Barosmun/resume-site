@@ -87,12 +87,12 @@
 
 </script>
 
-<div class="container flex flex-col-reverse lg:flex-row w-full">
+<div class="container card flex flex-col-reverse lg:flex-row w-full">
 
   
   <div class="flex flex-col w-full lg:w-9/12">
 
-    <div class="card w-full px-4 py-4 flex justify-around">
+    <div class="w-full px-4 py-4 flex justify-around">
       
 
       <button type="button" class="btn variant-filled" on:click={reset}>
@@ -106,7 +106,7 @@
       </button>
     </div>
 
-    <div class="card w-full px-4 py-4 justify-center flex">
+    <div class="w-full px-4 py-4 justify-center flex">
       <div class="grid grid-cols-9 grid-rows-7 w-fit h-fit">
         {#each map as row, r}
           {#each row as tile, c}
@@ -116,7 +116,7 @@
       </div>
     </div>
 
-    <div class="card flex flex-col content-center">
+    <div class="flex flex-col content-center p-4">
       <button type="button" class="btn variant-filled m-2" on:click={loadMatrix}>
         <span><IconUpload width="32" height="32" /></span>
         <span>Load Tile Matrix</span>
@@ -125,9 +125,9 @@
     </div>
   </div>
 
-  <div class=" card flex px-4 py-4 flex-row lg:flex-col space-x-1 lg:space-y-1">
+  <div class="flex px-4 py-4 flex-row lg:flex-col space-x-1 lg:space-y-1 w-full lg:w-3/12 overflow-auto">
     {#each tiles as tile, i}
-      <span class="flex flex-col lg:flex-row {selected == i+1 ? 'border-solid border-2' : ''}" on:click="{() => selected = i+1}"> <img src="{tile}" width="50px" height="50px" class="mr-4"/>  TILE {i+1}</span>
+      <span class="flex flex-col lg:flex-row {selected == i+1 ? 'border-solid border-2' : ''}" on:click="{() => selected = i+1}"> <img src="{tile}" width="50px" height="50px" class="mr-4"/>TILE {i+1}</span>
     {/each}
   </div>
 

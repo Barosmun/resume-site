@@ -1,8 +1,10 @@
 <script>
   import "../app.postcss";
-  import { AppBar, AppShell, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
+  import { AppBar, AppShell, Avatar, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
   import { base } from "$app/paths";
   import { page } from '$app/stores';
+
+  import Logo from "$lib/assets/simple_logo_circle.svg";
 
   //Icons
   import IconHome from '~icons/tabler/home'
@@ -16,9 +18,22 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <AppBar padding="p-4" gridColumns="grid-cols-1" slotDefault="place-self-center" slotTrail="place-content-end">
+    <AppBar gridColumns="grid-cols-11" slotLead="col-start-4 place-self-center" slotDefault="col-start-6 place-self-center" slotTrail="col-start-8 col-span-2 place-content-start">
+
+      <svelte:fragment slot="lead">
+        <Avatar src="{Logo}" width="w-16" rounded="rounded-full" background="none" />
+      </svelte:fragment>
+
       <h2 class="h2" data-toc-ignore>barosmun</h2>
+
+      <svelte:fragment slot="trail">
+        <a href="https://github.com/barosmun"><button type="button" class="btn-icon btn-icon-sm variant-ghost-surface"><IconBrandGithub width="26" height="26"/></button></a>
+        <a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon btn-icon-sm variant-ghost-surface"><IconBrandLinkedin width="26" height="26"/></button></a>
+        <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon btn-icon-sm  variant-ghost-surface"><IconBrandItch width="26" height="26"/></button></a>
+    </svelte:fragment>
+    
     </AppBar>
+
 
     <TabGroup 
     justify="justify-center"
@@ -27,7 +42,7 @@
     flex="flex-1 lg:flex-none"
     rounded=""
     border=""
-    class="bg-surface-100-800-token w-full"
+    class="w-full bg-surface-100-800-token"
     padding="px-4 py-2 lg:px-16"
     >
 
@@ -62,11 +77,6 @@
       </TabAnchor> -->
     </TabGroup>
 
-    <!-- <div class="flex justify-between w-28 pr-8">
-          <a class="btn-icon btn-icon-sm variant-filled-surface cursor-pointer" href="https://github.com/barosmun"> <IconBrandGithub />  </a>
-          <a class="btn-icon btn-icon-sm variant-filled-surface cursor-pointer" href="https://www.linkedin.com/in/barrett-osmundson/"> <IconBrandLinkedin />  </a>
-        </div> -->
-    <!-- <LightSwitch class="absolute top-2 right-2"/> -->
   </svelte:fragment>
 
   <!-- Router Slot -->
