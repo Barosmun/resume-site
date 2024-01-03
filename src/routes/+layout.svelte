@@ -8,7 +8,7 @@
 
   //Icons
   import IconHome from '~icons/tabler/home'
-  import IconUser from '~icons/tabler/user'
+  import IconDeviceGamepad from '~icons/tabler/device-gamepad'
   import IconApps from '~icons/tabler/apps'
   import IconBriefcase from '~icons/tabler/briefcase'
   import IconBrandGithub from '~icons/tabler/brand-github'
@@ -56,6 +56,11 @@
       <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work'}>
         <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBriefcase width="32" height="32"/> </div></svelte:fragment>
         <span>Work</span>
+      </TabAnchor>
+      
+      <TabAnchor href={base + '/games'} selected={$page.url.pathname === '/games' || $page.url.pathname === '/resume-site/games'}>
+        <svelte:fragment slot="lead"><div class="flex justify-center"> <IconDeviceGamepad width="32" height="32"/> </div></svelte:fragment>
+        <span>Games</span>
       </TabAnchor>
       
       <TabAnchor href={base + '/apps'} selected={$page.url.pathname === '/apps' || $page.url.pathname === '/resume-site/apps'}>
