@@ -209,7 +209,7 @@
   
 </script>
 
-<div class="card p-6 variant-soft-surface">
+<div class="card px-6 pb-6 pt-2 variant-soft-surface">
   <header class="card-header flex justify-between">
     <h1 class="h2">Skills</h1>
     <RadioGroup>
