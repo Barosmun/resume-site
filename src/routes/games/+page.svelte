@@ -116,7 +116,7 @@
         <div class="flex flex-col justify-between col-span-2 pt-2 pb-4">
           <div>
             <h4 class="h3 mb-4">{game.title}</h4>
-            <!-- <p>{game.desc}</p> -->
+            <p>{game.desc}</p>
           </div>
           
           <span>
