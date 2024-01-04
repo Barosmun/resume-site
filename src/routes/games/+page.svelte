@@ -111,8 +111,8 @@
     {#each games as game, i}
       <div class="card rounded-xl grid grid-rows-3 md:grid-rows-1 md:grid-cols-5 px-6 py-4 gap-x-8">
         <!-- border border-2 -->
-        <div class="row-span-2 w-full md:row-span-0 md:col-span-2">
-          <a class="p-0" href="{game.html5Link ? game.html5Link : game.link}"><img class="card rounded-xl w-full" src="{game.img}" /> </a>
+        <div class="row-span-2 w-full md:row-span-0 md:col-span-2 flex justify-center">
+          <a class="p-0" href="{game.html5Link ? game.html5Link : game.link}"><img class="card rounded-xl w-11/12" src="{game.img}" /> </a>
         </div>
 
         <div class="flex flex-col justify-between px-1 pt-2 md:col-span-2 md:pb-4 md:px-0">
