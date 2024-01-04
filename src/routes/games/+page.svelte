@@ -109,13 +109,15 @@
 
   <div class="logo-cloud grid-cols-1 gap-4">
     {#each games as game, i}
-      <div class="card rounded-xl grid grid-cols-5 px-6 py-4 gap-x-8">
+      <div class="card rounded-xl grid grid-rows-3 md:grid-rows-1 md:grid-cols-5 px-6 py-4 gap-x-8">
         <!-- border border-2 -->
-        <img class="card rounded-xl col-span-2" src="{game.img}" /> 
+        <div class="row-span-2 w-full md:row-span-0 md:col-span-2">
+          <a class="p-0" href="{game.html5Link ? game.html5Link : game.link}"><img class="card rounded-xl w-full" src="{game.img}" /> </a>
+        </div>
 
-        <div class="flex flex-col justify-between col-span-2 pt-2 pb-4">
+        <div class="flex flex-col justify-between px-1 pt-2 md:col-span-2 md:pb-4 md:px-0">
           <div>
-            <h4 class="h3 mb-4">{game.title}</h4>
+            <h4 class="h2 md:h3 mb-4">{game.title}</h4>
             <p>{game.desc}</p>
           </div>
           
@@ -127,7 +129,7 @@
           </span>
         </div>
 
-        <div class="grid justify-items-center justify-center content-center">
+        <div class="hidden md:grid justify-items-center justify-center content-center">
           <a href="{game.html5Link ? game.html5Link : game.link}"><span class="badge bg-surface-500 p-2"> <IconExternalLink width="24" height="24" /> </span></a>
         </div>
 
