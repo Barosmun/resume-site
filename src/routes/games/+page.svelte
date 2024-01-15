@@ -109,7 +109,7 @@
 
   <div class="logo-cloud grid-cols-1 gap-4">
     {#each games as game, i}
-      <div class="card rounded-xl h-min flex flex-col md:grid md:grid-rows-1 md:grid-cols-5 md:px-6 md:py-4 md:gap-x-8 md:h-auto">
+      <div class="card rounded-xl h-min flex flex-col md:grid md:grid-rows-1 md:grid-cols-5 md:px-6 md:py-4 md:gap-x-8 md:h-auto variant-soft">
         <!-- border border-2 -->
         <div class="w-full flex justify-center md:col-span-2">
           <a class="p-0" href="{game.html5Link ? game.html5Link : game.link}"><img class="card rounded-xl" src="{game.img}" /> </a>

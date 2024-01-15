@@ -1,15 +1,15 @@
 <script lang="ts">
-  import tile_1 from '$lib/data/tiles/1.png';
-  import tile_2 from '$lib/data/tiles/2.png';
-  import tile_3 from '$lib/data/tiles/3.png';
-  import tile_4 from '$lib/data/tiles/4.png';
-  import tile_5 from '$lib/data/tiles/5.png';
-  import tile_6 from '$lib/data/tiles/6.png';
-  import tile_7 from '$lib/data/tiles/7.png';
-  import tile_8 from '$lib/data/tiles/8.png';
-  import tile_9 from '$lib/data/tiles/9.png';
-  import tile_10 from '$lib/data/tiles/10.png';
-  import tile_11 from '$lib/data/tiles/11.png';
+  import tile_1 from '$lib/assets/tiles/1.png';
+  import tile_2 from '$lib/assets/tiles/2.png';
+  import tile_3 from '$lib/assets/tiles/3.png';
+  import tile_4 from '$lib/assets/tiles/4.png';
+  import tile_5 from '$lib/assets/tiles/5.png';
+  import tile_6 from '$lib/assets/tiles/6.png';
+  import tile_7 from '$lib/assets/tiles/7.png';
+  import tile_8 from '$lib/assets/tiles/8.png';
+  import tile_9 from '$lib/assets/tiles/9.png';
+  import tile_10 from '$lib/assets/tiles/10.png';
+  import tile_11 from '$lib/assets/tiles/11.png';
 
   // Icons
   import IconReload from '~icons/tabler/reload';

@@ -66,8 +66,8 @@
             </AppRailAnchor>
         </svelte:fragment> -->
     </AppRail>
-    <div class="flex-1 flex flex-col overflow-hidden">
-        <AppBar class="w-full flex-none">
+    <div class="flex-1 flex flex-col overflow-hidden ">
+        <AppBar class="w-full flex-none ">
             <svelte:fragment slot="lead"><button type="button" on:click={() => {currentTile = 0;}} class="btn-icon btn-icon-sm"><IconArrowLeft width="24" height="24"/></button></svelte:fragment>
             <h4 class="h4"> {apps[currentTile].title}</h4>
             <svelte:fragment slot="trail">
