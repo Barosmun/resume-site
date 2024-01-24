@@ -18,16 +18,16 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <AppBar padding="px-8 pt-0 pb-12 md:pt-6 md:px-0" gridColumns="grid-cols-3 md:grid-cols-11" slotLead="place-self-start md:col-start-4 md:place-self-center" slotDefault="text-center md:col-start-6 place-self-center" slotTrail="place-content-end md:col-start-8 md:col-span-2 md:place-content-start">
+    <AppBar padding="px-8 pt-0 pb-12 md:pt-6 md:px-0" gridColumns="grid-cols-3 md:grid-cols-11" slotLead="place-self-center col-start-1 md:col-start-3 lg:col-start-4" slotDefault="place-self-center md:col-start-6" slotTrail="place-self-center col-start-3 md:col-start-9 lg:col-start-8 md:col-span-2 ">
 
       <svelte:fragment slot="lead">
-        <Avatar src="{Logo}" width="w-16 md:w-20" rounded="rounded-full" background="none" />
+        <Avatar src="{Logo}" width="w-12 md:w-20" rounded="rounded-full" background="none" />
       </svelte:fragment>
 
-      <h1 class="h1" data-toc-ignore>barosmun</h1>
+      <h1 class="h2 md:h1" data-toc-ignore>barosmun</h1>
 
       <svelte:fragment slot="trail">
-        <div class="flex flex-row gap-x-1 md:gap-x-4">
+        <div class="flex flex-row gap-x-1 lg:gap-x-4">
           <a href="https://github.com/barosmun"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandGithub width={30} height={30}/></button></a>
           <a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandLinkedin width={30} height={30}/></button></a>
           <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandItch width={30} height={30}/></button></a>
