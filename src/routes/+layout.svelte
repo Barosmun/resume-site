@@ -18,13 +18,13 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <AppBar padding="px-8 pt-0 pb-12 md:pt-6 md:px-0" gridColumns="grid-cols-3 md:grid-cols-11" slotLead="md:col-start-4 md:place-self-center" slotDefault="md:col-start-6 place-self-center" slotTrail="place-content-end md:col-start-8 md:col-span-2 md:place-content-start">
+    <AppBar padding="px-8 pt-0 pb-12 md:pt-6 md:px-0" gridColumns="grid-cols-3 md:grid-cols-11" slotLead="place-self-start md:col-start-4 md:place-self-center" slotDefault="text-center md:col-start-6 place-self-center" slotTrail="place-content-end md:col-start-8 md:col-span-2 md:place-content-start">
 
       <svelte:fragment slot="lead">
         <Avatar src="{Logo}" width="w-16 md:w-20" rounded="rounded-full" background="none" />
       </svelte:fragment>
 
-      <h1 class="h2 md:h1" data-toc-ignore>barosmun</h1>
+      <h1 class="h1" data-toc-ignore>barosmun</h1>
 
       <svelte:fragment slot="trail">
         <div class="flex flex-row gap-x-1 md:gap-x-4">
