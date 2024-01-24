@@ -1,1 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 176.98"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:8px;}</style></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_2-2" data-name="Layer 2"><polygon class="cls-1" points="52 142.51 5 118.51 50 92.51 4 66.51 52 35.51 52 90.51 52 142.51"/><polyline class="cls-1" points="52 90.51 95 58.51 138 90.51 95 120.51 52 90.51 52 144.51 2 173.51 2 3.51 95 58.51"/><polyline class="cls-1" points="138 97.51 138 144.51 188 173.51 188 3.51 95 58.51"/><polygon class="cls-1" points="138 142.51 185 118.51 140 92.51 186 66.51 138 35.51 138 90.51 138 142.51"/><path class="cls-1" d="M95,58.51v0Z"/></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 210 180" style="enable-background:new 0 0 210 180;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#D2D6E3;stroke-width:10;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#D2D6E3;stroke-width:10;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<line class="st0" x1="58.1" y1="144.2" x2="11.1" y2="117.1"/>
+<line class="st0" x1="58.1" y1="90" x2="11.1" y2="117.1"/>
+<line class="st0" x1="58.1" y1="90" x2="11.1" y2="62.8"/>
+<path class="st0" d="M58.1,90"/>
+<line class="st0" x1="58.1" y1="35.7" x2="11.1" y2="62.8"/>
+<line class="st0" x1="58.1" y1="90" x2="58.1" y2="35.7"/>
+<line class="st0" x1="105.1" y1="62.9" x2="58.1" y2="90"/>
+<line class="st0" x1="105.1" y1="117.1" x2="105.1" y2="62.9"/>
+<line class="st0" x1="151.9" y1="144.2" x2="198.9" y2="117.1"/>
+<line class="st0" x1="151.9" y1="90" x2="198.9" y2="117.1"/>
+<line class="st0" x1="151.9" y1="90" x2="198.9" y2="62.9"/>
+<line class="st0" x1="151.9" y1="35.7" x2="198.9" y2="62.9"/>
+<line class="st0" x1="151.9" y1="90" x2="151.9" y2="35.7"/>
+<line class="st0" x1="105.1" y1="62.9" x2="151.9" y2="90"/>
+<polyline class="st1" points="11.1,62.9 11.1,8.6 58.1,35.7 105.1,62.9 151.9,35.7 198.9,8.6 198.9,62.9 198.9,117.1 198.9,171.4 
+	151.9,144.2 151.9,90 105.1,117.1 58.1,90 58.1,144.2 11.1,171.4 11.1,117.1 11.1,62.8 "/>
+</svg>

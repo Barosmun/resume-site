@@ -21,16 +21,16 @@
     <AppBar padding="px-8 pt-0 pb-12 md:pt-6 md:px-0" gridColumns="grid-cols-3 md:grid-cols-11" slotLead="md:col-start-4 md:place-self-center" slotDefault="md:col-start-6 place-self-center" slotTrail="place-content-end md:col-start-8 md:col-span-2 md:place-content-start">
 
       <svelte:fragment slot="lead">
-        <Avatar src="{Logo}" width="w-16" rounded="rounded-full" background="none" />
+        <Avatar src="{Logo}" width="w-20" rounded="rounded-full" background="none" />
       </svelte:fragment>
 
-      <h2 class="h2" data-toc-ignore>barosmun</h2>
+      <h1 class="h1" data-toc-ignore>barosmun</h1>
 
       <svelte:fragment slot="trail">
-        <div class="flex flex-row md:gap-x-2">
-          <a href="https://github.com/barosmun"><button type="button" class="btn-icon btn-icon-sm variant-ghost-surface"><IconBrandGithub width="26" height="26"/></button></a>
-          <a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon btn-icon-sm variant-ghost-surface"><IconBrandLinkedin width="26" height="26"/></button></a>
-          <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon btn-icon-sm  variant-ghost-surface"><IconBrandItch width="26" height="26"/></button></a>
+        <div class="flex flex-row gap-x-1 md:gap-x-4">
+          <a href="https://github.com/barosmun"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandGithub width={30} height={30}/></button></a>
+          <a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandLinkedin width={30} height={30}/></button></a>
+          <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandItch width={30} height={30}/></button></a>
         </div>
       </svelte:fragment>
     
