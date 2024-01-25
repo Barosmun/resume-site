@@ -18,23 +18,28 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <AppBar padding="px-8 pt-0 pb-12 md:pt-6 md:px-0" gridColumns="grid-cols-3 md:grid-cols-11" slotLead="place-self-center col-start-1 md:col-start-3 lg:col-start-4" slotDefault="place-self-center md:col-start-6" slotTrail="place-self-center col-start-3 md:col-start-9 lg:col-start-8 md:col-span-2 ">
 
-      <svelte:fragment slot="lead">
-        <Avatar src="{Logo}" width="w-12 md:w-20" rounded="rounded-full" background="none" />
-      </svelte:fragment>
+    <div class="w-full bg-surface-100-800-token py-4 flex justify-center items-center">
 
-      <h1 class="h2 md:h1" data-toc-ignore>barosmun</h1>
+      <div class="w-full px-10 md:w-9/12 lg:6/12 flex justify-between xl:justify-center xl:gap-x-4 items-center">
+        <div class="w-2/12 flex justify-center">
+          <Avatar src="{Logo}" width="w-20" rounded="rounded-full" background="none" />
+        </div>
 
-      <svelte:fragment slot="trail">
-        <div class="flex flex-row gap-x-1 lg:gap-x-4">
+        <div class="w-3/12 flex justify-center xl:mr-4">
+          <!-- text-violet-500 sm:text-cyan-500 md:text-emerald-500 lg:text-yellow-500 xl:text-red-500 -->
+          <h1 class="h1">barosmun</h1>
+        </div>
+        
+  
+        <div class="w-2/12 flex flex-row justify-center gap-x-2">
           <a href="https://github.com/barosmun"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandGithub width={30} height={30}/></button></a>
           <a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandLinkedin width={30} height={30}/></button></a>
           <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandItch width={30} height={30}/></button></a>
         </div>
-      </svelte:fragment>
-    
-    </AppBar>
+      </div>
+
+    </div>
 
 
     <TabGroup 
