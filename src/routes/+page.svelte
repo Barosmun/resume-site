@@ -115,7 +115,7 @@
     },
     {
       icon: IconBrandJQuery,
-      name: "jQuery",
+      name: "jquery",
       stars: 2
     },
     {
@@ -162,7 +162,7 @@
       list: langs
     },
     {
-      name: 'Frameworks',
+      name: 'Frameworks / Libraries',
       list: frameworks
     },
     {
