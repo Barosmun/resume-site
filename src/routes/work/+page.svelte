@@ -77,7 +77,7 @@
 
 <div class="card px-6 pb-6 pt-2 mb-6 variant-soft-surface">
   <header class="card-header flex">
-    <img src="{IconMagni}" width="48"/>
+    <img src="{IconMagni}" width="48" alt="Magni Logo"/>
     <h1 class="h2 ml-4">MAGNI</h1>
   </header>
 
@@ -134,9 +134,9 @@
       I also utlizied 
       <a class="anchor" href="https://tailwindcss.com/">Tailwind CSS</a>, 
       <a class="anchor" href="https://www.skeleton.dev/">Skeleton UI</a>, 
-      and <a class="anchor" href="https://iconify.design/">Iconify</a> 
-      with <a class="anchor" href="https://tabler.io/icons">Tabler Icons</a>
-      and <a class="anchor" href="https://simpleicons.org/">Simple Icons</a>.
+      and the <a class="anchor" href="https://www.npmjs.com/package/unplugin-icons">unplugin-icons</a> package powered by <a class="anchor" href="https://iconify.design/">Iconify</a> 
+      (with icon assets from <a class="anchor" href="https://tabler.io/icons">Tabler</a>
+      and <a class="anchor" href="https://simpleicons.org/">Simple Icons</a>).
 
       This site is hosted on <a class="anchor" href="https://pages.github.com/">GitHub Pages</a>.
     </span>
