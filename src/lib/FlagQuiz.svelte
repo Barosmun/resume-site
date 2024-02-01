@@ -134,7 +134,7 @@
 
     </div>
 
-    <div class="row-start-3 lg:row-start-2 row-span-4 w-full grid border max-lg:mb-4">
+    <div class="row-start-3 lg:row-start-2 row-span-4 w-full grid max-lg:mb-4">
       {#key flag}
         <div out:fade={{duration: 300}} in:fade={{duration: 300}} class="h-32 md:h-64 lg:h-96 row-start-1 col-start-1 bg-no-repeat bg-center bg-contain flex justify-center items-center" style="background-image:url('{flag.url}');">
           {#if showAnswer}

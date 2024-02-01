@@ -87,7 +87,7 @@
 
 </script>
 
-<div class="container card flex flex-col-reverse lg:flex-row w-full">
+<div class="card flex flex-col-reverse lg:flex-row w-full">
 
   
   <div class="flex flex-col w-full lg:w-9/12">

@@ -1,44 +1,60 @@
 <script>
   import "../app.postcss";
-  import { AppBar, AppShell, Avatar, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
+  import { AppBar, AppShell, TabAnchor, TabGroup} from '@skeletonlabs/skeleton';
   import { base } from "$app/paths";
   import { page } from '$app/stores';
-
-  import Logo from "$lib/assets/simple_logo_circle.svg";
 
   //Icons
   import IconHome from '~icons/tabler/home'
   import IconDeviceGamepad from '~icons/tabler/device-gamepad'
   import IconApps from '~icons/tabler/apps'
   import IconBriefcase from '~icons/tabler/briefcase'
-  import IconBrandGithub from '~icons/tabler/brand-github'
-  import IconBrandLinkedin from '~icons/tabler/brand-linkedin'
-  import IconBrandItch from '~icons/tabler/brand-itch'
+
+  //Header Components
+  import Logo from '$lib/Logo.svelte';
+  import Socials from '$lib/Socials.svelte';
 </script>
+
+<style>
+  .main{width:100%}
+  @media (min-width: 640px){.main{max-width:640px}}
+  @media (min-width: 768px){.main{max-width:640px}}
+  @media (min-width: 1024px){.main{max-width:768px}}
+  @media (min-width: 1280px){.main{max-width:1024px}}
+  @media (min-width: 1536px){.main{max-width:1024px}}
+</style>
 
 <AppShell>
   <svelte:fragment slot="header">
 
     <div class="w-full bg-surface-100-800-token py-4 flex justify-center items-center">
 
-      <div class="w-full px-10 md:w-9/12 lg:6/12 flex justify-between xl:justify-center xl:gap-x-4 items-center">
+      <!-- Normal Screens -->
+      <div class="max-sm:hidden main px-8 flex justify-between items-center">
         <div class="w-2/12 flex justify-center">
-          <Avatar src="{Logo}" width="w-20" rounded="rounded-full" background="none" />
+          <Logo></Logo>
         </div>
 
-        <div class="w-3/12 flex justify-center xl:mr-4">
-          <!-- text-violet-500 sm:text-cyan-500 md:text-emerald-500 lg:text-yellow-500 xl:text-red-500 -->
+        <div class="w-3/12 flex justify-center xl:mr-4 items-center">
           <h1 class="h1">barosmun</h1>
         </div>
         
   
-        <div class="w-2/12 flex flex-row justify-center gap-x-2">
-          <a href="https://github.com/barosmun"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandGithub width={30} height={30}/></button></a>
-          <a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandLinkedin width={30} height={30}/></button></a>
-          <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandItch width={30} height={30}/></button></a>
+        <div class="w-2/12 flex flex-row justify-center gap-x-2 items-center">
+          <Socials></Socials>
         </div>
       </div>
 
+      <!-- Mobile -->
+      <div class="sm:hidden main mx-auto px-4 flex justify-between">
+        <div class="flex items-center flex-1">
+          <Logo size={16}></Logo>
+          <h1 class="h1 ml-4">barosmun</h1>
+        </div>
+        <div class="flex justify-end items-center gap-x-1">
+          <Socials size={24}></Socials>
+        </div>
+      </div>
     </div>
 
 
@@ -92,7 +108,7 @@
   </svelte:fragment>
 
   <!-- Router Slot -->
-  <div class="container px-8 md:px-12 lg:px-24 xl:px-64 py-8 mx-auto h-full lg:h-auto">
+  <div class="main mx-auto px-8 py-8 h-full lg:h-auto">
     <slot />
   </div>
   <!-- ---- / ---- -->
