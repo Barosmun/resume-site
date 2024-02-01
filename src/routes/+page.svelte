@@ -191,7 +191,6 @@
   sortSkills(sortby);
   
   function sortSkills(sortby: any){
-    console.log(sortby)
     switch(sortby){
       case 'name':
         skills.sort(function(a, b){
