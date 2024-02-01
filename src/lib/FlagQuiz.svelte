@@ -11,12 +11,7 @@
 
   import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
 
-  import { flip } from 'svelte/animate'
-  import { fade, crossfade } from 'svelte/transition'
-  import { replaceSlide } from '$lib/replaceSlide';
-
-  const [send, receive] = replaceSlide({duration: 350, pixels: 40});
-  const [sendFlag, recieveFlag] = crossfade({duration: 3000});
+  import { fade, fly } from 'svelte/transition'
 
   
   let flag: {name: string, url: string};
@@ -102,7 +97,7 @@
     <hr class="m-2" />
   {/each} -->
 
-  
+
 {#if !quizComplete}
   <div class="card py-4 grid grid-cols-1 grid-rows-7 lg:grid-rows-6 justify-around lg:justify-between items-center h-full lg:gap-y-6">
 
@@ -110,16 +105,20 @@
 
       <div class="max-lg:row-start-2 lg:col-start-2 lg:col-span-4 flex justify-center">
         {#if quizMode}
-          <div class="w-11/12 text-center">
-            <h2 class="h2">SCORE: 
+          <div class="w-11/12 text-center flex justify-center">
+
+            <h2 class="h2 mr-2">SCORE: </h2>
+
+            <div class="grid grid-cols-3 grid-rows-1">
               {#key score}
-                <span in:receive out:send>{score}</span>
+                <h2 class="h2 col-start-1 row-start-1" in:fly={{y: "1em"}} out:fly={{y: "-1em"}}>{score}</h2>
               {/key}
-              /
+              <h2 class="h2 mx-1 col-start-2 row-start-1"> / </h2>
               {#key count}
-                <span in:receive out:send>{count}</span>
+                <h2 class="h2 col-start-3 row-start-1" in:fly={{y: "1em"}} out:fly={{y: "-1em"}}>{count}</h2>
               {/key}
-            </h2>
+            </div>
+
           </div>
         {:else}
           <div class="w-11/12 text-center {revealed ? '' : 'placeholder animate-pulse py-5'}">
@@ -142,7 +141,7 @@
         <div out:fade={{duration: 300}} in:fade={{duration: 300}} class="h-96 row-start-1 col-start-1 bg-no-repeat bg-center bg-contain flex justify-center items-center" style="background-image:url('{flag.url}');">
           {#if showAnswer}
             {#if correct}
-              <IconCircleCheck width={'100%'} height={'100%'} color='rgba(var(--color-primary-500))'></IconCircleCheck>
+              <IconCircleCheck width={'100%'} height={'100%'} color='rgba(var(--color-primary-500))' style="opacity: 100% "></IconCircleCheck>
             {:else}
               <IconCirclex width={'100%'} height={'100%'} color='rgba(var(--color-error-500))'></IconCirclex>
             {/if}
@@ -154,7 +153,7 @@
     <div class="row-start-7 lg:row-start-6 w-full flex justify-center">
 
       {#if quizMode}
-        <div class="flex justify-center gap-x-4 w-full">
+        <div class="flex max-md:flex-col md:flex-row justify-center max-md:gap-y-4 md:gap-x-4 w-full">
           {#each flagAnswers as answer}
             <button disabled={showAnswer} type="button" class="btn py-4 {showAnswer ? (answer === flag.name ? 'variant-filled-primary' : 'variant-filled-error') : 'variant-filled'}" on:click={ ()=> {
               count++;
