@@ -99,7 +99,7 @@
 
 
 {#if !quizComplete}
-  <div class="card py-4 grid grid-cols-1 grid-rows-7 lg:grid-rows-6 justify-around lg:justify-between items-center h-full lg:gap-y-6">
+  <div class="card py-4 grid grid-cols-1 grid-rows-7 lg:grid-rows-6 justify-around lg:justify-between items-center h-contain lg:h-full lg:gap-y-6">
 
     <div class="lg:row-span-1 row-span-2 row-start-1 lg:h-auto align-middle grid max-lg:grid-rows-2 lg:grid-cols-6 w-full px-8">
 
