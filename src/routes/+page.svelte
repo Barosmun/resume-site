@@ -1,5 +1,9 @@
 <script lang="ts">
   import { RadioGroup, RadioItem, Ratings } from '@skeletonlabs/skeleton';
+
+  import { flip } from 'svelte/animate';
+  import { quintInOut } from 'svelte/easing';
+
   import IconStarFilled from '~icons/tabler/star-filled'
   import IconCategory from '~icons/tabler/category-filled'
   import IconStars from '~icons/tabler/stars-filled'
@@ -33,10 +37,17 @@
   import IconBrandMongodb from '~icons/tabler/brand-mongodb'
   import IconBrandCouchdb from '~icons/tabler/brand-couchdb'
 
-  //Programs
+  //Game Dev
   import IconBrandGamemaker from '~icons/simple-icons/gamemaker'
 
-  var langs = [
+
+  var skills_full = [
+    // -------- LANGUAGES --------
+    {
+      isCategory: true,
+      name: 'Languages',
+      stars: 0
+    },
     {
       icon: IconBrandJavascript,
       name: "javascript",
@@ -67,42 +78,13 @@
       name: "c++",
       stars: 1
     },
-    // {
-    //   icon: IconBrandHaskell,
-    //   name: "haskell",
-    //   stars: 1
-    // },
-    // {
-    //   icon: IconBrandRacket,
-    //   name: "racket",
-    //   stars: 1
-    // },
-  ]
 
-  var web = [
+    // -------- FRAMEWORKS --------
     {
-      icon: IconHtml,
-      name: "html\xa0",
-      stars: 3
+      isCategory: true,
+      name: 'Frameworks / Libraries',
+      stars: 0
     },
-    {
-      icon: IconBrandCss3,
-      name: "css3\xa0",
-      stars: 3
-    },
-    {
-      icon: IconBrandBootstrap,
-      name: "bootstrap",
-      stars: 3
-    },
-    {
-      icon: IconBrandTailwind,
-      name: "tailwind",
-      stars: 2
-    },
-  ]
-
-  var frameworks = [
     {
         icon: IconBrandAngular,
         name: "angular",
@@ -128,17 +110,38 @@
       name: "vue",
       stars: 1
     },
-  ]
-
-  var programs = [
+    // -------- WEB DESIGN --------
     {
-      icon: IconBrandGamemaker,
-      name: "gamemaker",
+      isCategory: true,
+      name: 'Web Design',
+      stars: 0
+    },
+    {
+      icon: IconHtml,
+      name: "html\xa0",
       stars: 3
     },
-  ]
-
-  var dbs = [
+    {
+      icon: IconBrandCss3,
+      name: "css3\xa0",
+      stars: 3
+    },
+    {
+      icon: IconBrandBootstrap,
+      name: "bootstrap",
+      stars: 3
+    },
+    {
+      icon: IconBrandTailwind,
+      name: "tailwind",
+      stars: 2
+    },
+    // -------- DATABASES --------
+    {
+      isCategory: true,
+      name: 'Databases',
+      stars: 0
+    },
     {
       icon: IconSql,
       name: "sql\xa0",
@@ -149,42 +152,20 @@
       name: "mongo",
       stars: 1
     },
-    // {
-    //   icon: IconBrandCouchdb,
-    //   name: "couchdb",
-    //   stars: 1
-    // },
+    // -------- GAME DEVELOPMENT --------
+    {
+      isCategory: true,
+      name: 'Game Development',
+      stars: 0
+    },
+    {
+      icon: IconBrandGamemaker,
+      name: "gamemaker",
+      stars: 3
+    },
   ]
 
-  var categories = [
-    {
-      name: 'Languages',
-      list: langs
-    },
-    {
-      name: 'Frameworks / Libraries',
-      list: frameworks
-    },
-    {
-      name: 'Web Design',
-      list: web
-    },
-    {
-      name: 'Databases',
-      list: dbs
-    },
-    {
-      name: 'Engines',
-      list: programs
-    },
-
-  ]
-
-
-  var skills = [...categories[0].list];
-  for(let i = 1; i < categories.length; i++){
-    skills.push(...categories[i].list);
-  }
+  var skills = [...skills_full];
 
   
   let sortby = 'stars';
@@ -193,6 +174,7 @@
   function sortSkills(sortby: any){
     switch(sortby){
       case 'name':
+        skills = skills.filter((skill) => !skill.isCategory);
         skills.sort(function(a, b){
           if(a.name < b.name) { return -1; }
           if(a.name > b.name) { return 1; }
@@ -200,7 +182,11 @@
         })
         break;
       case 'stars':
+        skills = skills.filter((skill) => !skill.isCategory);
         skills.sort((a, b) => b.stars - a.stars);
+        break;
+      case 'categories':
+        skills = [...skills_full];
         break;
     }
     skills = skills;
@@ -229,44 +215,23 @@
       <RadioItem on:change={() => sortSkills('categories')} bind:group={sortby} name="categories" value={'categories'}><IconCategory width=24 height=24 /></RadioItem>
     </RadioGroup>
   </header>
-
-    {#if sortby == "categories"}
-      {#each categories as category, i }
-      <div class="card p-2 m-3 variant-ringed-surface">
-        <h4 class="h4 ml-2">{categories[i].name}</h4>
-        <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-2">
-          {#each categories[i].list as item }
-          <div class="snap-start shrink-0 card py-4 w-32 lg:w-40 text-center flex flex-col justify-center items-center variant-soft">
-            <span class="mb-2">{item.name}</span>
-            <svelte:component this={item.icon} width=48 height=48/>
-            <Ratings bind:value={item.stars} max={item.stars} class="mt-4">
-              <svelte:fragment slot="empty"></svelte:fragment>
-              <svelte:fragment slot="half"></svelte:fragment>
-              <svelte:fragment slot="full"><IconStarFilled width=12 height=12 /></svelte:fragment>
-            </Ratings>
-          </div>
-            <!-- <div class="card px-8 pt-4 pb-4 flex flex-col justify-center items-center w-96">
-              
-            </div> -->
-          {/each}
-        </div>
+  
+  <section class=" {'logo-cloud grid-cols-3 lg:grid-cols-6 gap-1 pt-4'} ">
+    {#each skills as skill (skill) }
+      <div animate:flip={ {duration: 700, easing: quintInOut} } class="{skill.isCategory ? 'h4 col-span-3 lg:col-span-6' :'px-8 pt-4 pb-4 flex flex-col justify-center items-center variant-soft'}">
+        <span class="mb-2">{skill.name}</span>
+        {#if !skill.isCategory}
+          <svelte:component this={skill.icon} width=48 height=48/>
+        
+          <Ratings bind:value={skill.stars} max={skill.stars} class="mt-4">
+            <svelte:fragment slot="empty"></svelte:fragment>
+            <svelte:fragment slot="half"></svelte:fragment>
+            <svelte:fragment slot="full"><IconStarFilled width=12 height=12 /></svelte:fragment>
+          </Ratings>
+        {/if}
       </div>
-      {/each}
-    {:else}
-      <section class="logo-cloud grid-cols-3 lg:!grid-cols-6 gap-1 pt-4">
-        {#each skills as skill }
-          <div class="card px-8 pt-4 pb-4 flex flex-col justify-center items-center variant-soft">
-            <span class="mb-2">{skill.name}</span>
-            <svelte:component this={skill.icon} width=48 height=48/>
-            <Ratings bind:value={skill.stars} max={skill.stars} class="mt-4">
-              <svelte:fragment slot="empty"></svelte:fragment>
-              <svelte:fragment slot="half"></svelte:fragment>
-              <svelte:fragment slot="full"><IconStarFilled width=12 height=12 /></svelte:fragment>
-            </Ratings>
-          </div>
-        {/each}
-      </section>
-    {/if}
+    {/each}
+  </section>
 
 </div>
 
