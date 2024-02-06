@@ -16,12 +16,13 @@
   import IconBrandJava from '~icons/tabler/coffee'
   import IconBrandPython from '~icons/tabler/brand-python'
   import IconBrandCpp from '~icons/tabler/brand-cpp'
-  import IconBrandHaskell from '~icons/simple-icons/haskell'
-  import IconBrandRacket from '~icons/simple-icons/racket'
+  // import IconBrandHaskell from '~icons/simple-icons/haskell'
+  // import IconBrandRacket from '~icons/simple-icons/racket'
 
   //Frameworks
   import IconBrandAngular from '~icons/tabler/brand-angular'
   import IconBrandSvelte from '~icons/tabler/brand-svelte'
+  import IconBrandNode from '~icons/tabler/brand-nodejs'
   import IconBrandReact from '~icons/tabler/brand-react'
   import IconBrandVue from '~icons/tabler/brand-vue'
   import IconBrandJQuery from '~icons/simple-icons/jquery'
@@ -35,11 +36,17 @@
   //Dbs
   import IconSql from '~icons/tabler/sql'
   import IconBrandMongodb from '~icons/tabler/brand-mongodb'
-  import IconBrandCouchdb from '~icons/tabler/brand-couchdb'
+  // import IconBrandCouchdb from '~icons/tabler/brand-couchdb'
 
   //Game Dev
   import IconBrandGamemaker from '~icons/simple-icons/gamemaker'
+  import IconBrandThreejs from '~icons/tabler/brand-threejs'
+  import IconBrandBlender from '~icons/tabler/brand-blender'
 
+  //Tools
+  import IconBrandGit from '~icons/tabler/brand-git'
+  import IconBrandVscode from '~icons/tabler/brand-vscode'
+  import IconBrandAzure from '~icons/tabler/brand-azure'
 
   var skills_full = [
     // -------- LANGUAGES --------
@@ -82,19 +89,24 @@
     // -------- FRAMEWORKS --------
     {
       isCategory: true,
-      name: 'Frameworks / Libraries',
+      name: 'Frameworks',
       stars: 0
     },
     {
-        icon: IconBrandAngular,
-        name: "angular",
-        stars: 3
+      icon: IconBrandAngular,
+      name: "angular",
+      stars: 3
     },
     {
       icon: IconBrandSvelte,
       name: "svelte",
       stars: 2
     },
+    // {
+    //   icon: IconBrandNode,
+    //   name: "node",
+    //   stars: 2
+    // },
     {
       icon: IconBrandJQuery,
       name: "jquery",
@@ -163,18 +175,48 @@
       name: "gamemaker",
       stars: 3
     },
+    // {
+    //   icon: IconBrandThreejs,
+    //   name: "three.js",
+    //   stars: 1
+    // },
+    // {
+    //   icon: IconBrandBlender,
+    //   name: "blender",
+    //   stars: 1
+    // },
+    // -------- TOOLS --------
+    // {
+    //   isCategory: true,
+    //   name: 'Tools',
+    //   stars: 0
+    // },
+    // {
+    //   icon: IconBrandGit,
+    //   name: "git",
+    //   stars: 3
+    // },
+    // {
+    //   icon: IconBrandVscode,
+    //   name: "vs\xa0code",
+    //   stars: 3
+    // },
+    // {
+    //   icon: IconBrandAzure,
+    //   name: "azure",
+    //   stars: 2
+    // },
   ]
 
   var skills = [...skills_full];
 
-  
   let sortby = 'stars';
   sortSkills(sortby);
   
   function sortSkills(sortby: any){
     switch(sortby){
       case 'name':
-        skills = skills.filter((skill) => !skill.isCategory);
+        skills = [...skills_full].filter((skill) => !skill.isCategory);
         skills.sort(function(a, b){
           if(a.name < b.name) { return -1; }
           if(a.name > b.name) { return 1; }
@@ -182,7 +224,7 @@
         })
         break;
       case 'stars':
-        skills = skills.filter((skill) => !skill.isCategory);
+        skills = [...skills_full].filter((skill) => !skill.isCategory);
         skills.sort((a, b) => b.stars - a.stars);
         break;
       case 'categories':
