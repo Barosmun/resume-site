@@ -32,11 +32,6 @@
       name: "bootstrap",
     },
     {
-      icon: IconBrandTypescript,
-      name: "typescript",
-    },
-    
-    {
       icon: IconSql,
       name: "sql",
     },
