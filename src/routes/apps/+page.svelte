@@ -33,7 +33,7 @@
 
 </script>
 
-<div class="card bg-surface-50-900-token rounded-lg flex h-full w-full">
+<div class="card bg-surface-50-900-token rounded-lg flex h-fit w-full">
     <AppRail class="flex-none h-full">
         <!-- Lead -->
         <svelte:fragment slot="lead">
