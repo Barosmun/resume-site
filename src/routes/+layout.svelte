@@ -116,9 +116,9 @@
           <span>apps</span>
         </TabAnchor>
 
-        <TabAnchor href={base + '/three'} selected={$page.url.pathname === '/three' || $page.url.pathname === '/resume-site/three'}>
+        <TabAnchor href={base + '/games/tribal'} selected={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandThreejs width="32" height="32"/> </div></svelte:fragment>
-          <span>three.js</span>
+          <span>tribal</span>
         </TabAnchor>
 
         <!-- <TabAnchor href="https://github.com/barosmun">

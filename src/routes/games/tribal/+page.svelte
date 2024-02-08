@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
   import IconLoader from '~icons/tabler/loader'
   import * as THREE from "three"
 	let loading = true;
