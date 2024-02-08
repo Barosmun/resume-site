@@ -11,7 +11,7 @@ import {
 
 const scene = new Scene();
 
-const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new PerspectiveCamera(75, 1, 0.1, 1000);
 camera.position.z = 5;
 
 const geometry = new BoxGeometry();
@@ -42,10 +42,9 @@ const animate = () => {
 };
 
 export const resize = (elm: HTMLCanvasElement) => {
-
 	renderer.setSize(elm.width, elm.height);
   
-	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.aspect = elm.width / elm.height;
 	camera.updateProjectionMatrix();
 };
 
@@ -54,3 +53,7 @@ export const createScene = (el:HTMLCanvasElement) => {
 	resize(el);
 	animate();
 };
+
+export const exists = () => {
+  return renderer != null; 
+}
