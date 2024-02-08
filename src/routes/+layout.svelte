@@ -10,6 +10,7 @@
   import IconDeviceGamepad from '~icons/tabler/device-gamepad'
   import IconApps from '~icons/tabler/apps'
   import IconBriefcase from '~icons/tabler/briefcase'
+  import IconBrandThreejs from '~icons/tabler/brand-threejs'
 
   //Header Components
   import Logo from '$lib/Logo.svelte';
@@ -97,27 +98,27 @@
 
         <TabAnchor href={base + '/'} selected={$page.url.pathname === '/' || $page.url.pathname === '/resume-site'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconHome width="32" height="32" /> </div></svelte:fragment>
-          <span>Home</span> 
+          <span>home</span> 
         </TabAnchor>
       
         <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBriefcase width="32" height="32"/> </div></svelte:fragment>
-          <span>Work</span>
+          <span>work</span>
         </TabAnchor>
         
         <TabAnchor href={base + '/games'} selected={$page.url.pathname === '/games' || $page.url.pathname === '/resume-site/games'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconDeviceGamepad width="32" height="32"/> </div></svelte:fragment>
-          <span>Games</span>
+          <span>games</span>
         </TabAnchor>
         
         <TabAnchor href={base + '/apps'} selected={$page.url.pathname === '/apps' || $page.url.pathname === '/resume-site/apps'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconApps width="32" height="32"/> </div></svelte:fragment>
-          <span>Apps</span>
+          <span>apps</span>
         </TabAnchor>
 
         <TabAnchor href={base + '/three'} selected={$page.url.pathname === '/three' || $page.url.pathname === '/resume-site/three'}>
-          <svelte:fragment slot="lead"><div class="flex justify-center"> <IconApps width="32" height="32"/> </div></svelte:fragment>
-          <span>THREE</span>
+          <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandThreejs width="32" height="32"/> </div></svelte:fragment>
+          <span>three.js</span>
         </TabAnchor>
 
         <!-- <TabAnchor href="https://github.com/barosmun">
