@@ -2,6 +2,13 @@
 	import { onMount } from 'svelte';
   import IconLoader from '~icons/tabler/loader'
   import * as THREE from "three"
+  import { MapControls } from 'three/addons/controls/MapControls.js';
+  import { SelectionBox } from 'three/addons/interactive/SelectionBox.js';
+  import { SelectionHelper } from 'three/addons/interactive/SelectionHelper.js';
+  import { Villager } from '$lib/tribal/villager';
+  import { Hut, Tree } from '$lib/tribal/buildings';
+  import { TileBasic } from '$lib/tribal/tiles';
+
 	let loading = true;
 	let el:HTMLCanvasElement;
 
