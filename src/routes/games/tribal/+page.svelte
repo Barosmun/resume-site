@@ -15,6 +15,7 @@
   }
 
 	onMount(() => {
+    setTimeout(() => {
       let camera : THREE.PerspectiveCamera;
       let scene : THREE.Scene;
       let renderer : THREE.WebGLRenderer;
@@ -64,17 +65,18 @@
       init()
       animate()
 
-    setTimeout(() => {
-      resizeCanvas();
-      resize();
-      loading = false;
-    }, 10);
+      setTimeout(() => {
+        resizeCanvas();
+        resize();
+        loading = false;
+      }, 10);
 
-    window.addEventListener('resize', () => {resizeCanvas(); resize();});
-		
-		return () => {
-			window.removeEventListener('resize', () => {resizeCanvas(); resize();});
-		}
+      window.addEventListener('resize', () => {resizeCanvas(); resize();});
+      
+      return () => {
+        window.removeEventListener('resize', () => {resizeCanvas(); resize();});
+      }
+    }, 5);
 	});
 </script>
 
