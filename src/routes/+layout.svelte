@@ -27,20 +27,16 @@
     headerHeight = header.offsetHeight + tabs.offsetHeight;
     slot.style.height = `${document.body.scrollHeight - headerHeight}px`;
   }
-  
 
   onMount(() => {
     fillDynamic();
-
-    window.addEventListener('resize', fillDynamic);
-		
-		return () => {
-			window.removeEventListener('resize', fillDynamic);
-		}
-
-	});
-
+  })
 </script>
+
+<svelte:window
+  on:resize={fillDynamic}
+/>
+
 
 <style>
   .main{width:100%}

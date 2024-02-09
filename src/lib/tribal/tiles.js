@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-class Tile {
+export class Tile {
   
   constructor() {
     this.model = new THREE.Group();
