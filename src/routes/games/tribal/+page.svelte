@@ -434,7 +434,7 @@
 {#if loading}
   <div class="w-full h-full flex items-center flex-col">
     <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}></IconLoader>
-    <h1 class="h2"> loading... </h1>
+    <h1 class="h2"> loading.. </h1>
   </div>
 {/if}
 
