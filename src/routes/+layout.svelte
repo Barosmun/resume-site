@@ -10,7 +10,7 @@
   import IconDeviceGamepad from '~icons/tabler/device-gamepad'
   import IconApps from '~icons/tabler/apps'
   import IconBriefcase from '~icons/tabler/briefcase'
-  import IconBrandThreejs from '~icons/tabler/brand-threejs'
+  import IconCampfire from '~icons/tabler/campfire'
 
   //Header Components
   import Logo from '$lib/Logo.svelte';
@@ -113,7 +113,7 @@
         </TabAnchor>
 
         <TabAnchor href={base + '/games/tribal'} selected={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal'}>
-          <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandThreejs width="32" height="32"/> </div></svelte:fragment>
+          <svelte:fragment slot="lead"><div class="flex justify-center"> <IconCampfire width="32" height="32"/> </div></svelte:fragment>
           <span>tribal</span>
         </TabAnchor>
 
