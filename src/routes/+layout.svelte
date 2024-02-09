@@ -39,12 +39,12 @@
 
 
 <style>
-  .main{width:100%}
-  @media (min-width: 640px){.main{max-width:640px}}
-  @media (min-width: 768px){.main{max-width:640px}}
-  @media (min-width: 1024px){.main{max-width:768px}}
-  @media (min-width: 1280px){.main{max-width:1024px}}
-  @media (min-width: 1536px){.main{max-width:1024px}}
+  :global(.main){width:100%}
+  @media (min-width: 640px){:global(.main){max-width:640px}}
+  @media (min-width: 768px){:global(.main){max-width:640px}}
+  @media (min-width: 1024px){:global(.main){max-width:768px}}
+  @media (min-width: 1280px){:global(.main){max-width:1024px}}
+  @media (min-width: 1536px){:global(.main){max-width:1024px}}
 </style>
 
 <AppShell>
@@ -137,7 +137,7 @@
   </svelte:fragment>
 
   <!-- Router Slot -->
-  <div class="main mx-auto px-8 py-8" bind:this={slot}>
+  <div class="w-full mx-auto px-8 py-8 flex justify-center" bind:this={slot}>
     <slot />
   </div>
   <!-- ---- / ---- -->

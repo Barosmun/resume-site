@@ -98,63 +98,65 @@
 
 </script>
 
-<div class="card px-6 pb-6 pt-2 variant-soft-surface">
-  <header class="card-header flex justify-between pb-4">
-    <h1 class="h2">Games</h1>
-    <!-- <RadioGroup>
-      <RadioItem on:change={() => {display = "time"}} bind:group={display} name="time" value={'stars'}><IconStars width=24 height=24 /></RadioItem>
-      <RadioItem on:change={() => {display = "category"}} bind:group={display} name="category" value={'name'}><IconAZ width=24 height=24 /></RadioItem>
-    </RadioGroup> -->
-  </header>
-
-  <div class="logo-cloud grid-cols-1 gap-4">
-    {#each games as game, i}
-      <div class="card rounded-xl h-min flex flex-col md:grid md:grid-rows-1 md:grid-cols-5 md:px-6 md:py-4 md:gap-x-8 md:h-auto variant-soft">
-        <!-- border border-2 -->
-        <div class="w-full flex justify-center md:col-span-2">
-          <a class="p-0" href="{game.html5Link ? game.html5Link : game.link}"><img class="card rounded-xl" src="{game.img}" alt="{game.title} image"/> </a>
-        </div>
-
-        <div class="flex flex-col justify-between px-1 pt-2 md:col-span-2 md:pb-4 md:px-0">
-          <div>
-            <h4 class="h2 md:h3 mb-4">{game.title}</h4>
-            <p>{game.desc}</p>
+<div class="main">
+  <div class="card px-6 pb-6 pt-2 variant-soft-surface">
+    <header class="card-header flex justify-between pb-4">
+      <h1 class="h2">Games</h1>
+      <!-- <RadioGroup>
+        <RadioItem on:change={() => {display = "time"}} bind:group={display} name="time" value={'stars'}><IconStars width=24 height=24 /></RadioItem>
+        <RadioItem on:change={() => {display = "category"}} bind:group={display} name="category" value={'name'}><IconAZ width=24 height=24 /></RadioItem>
+      </RadioGroup> -->
+    </header>
+  
+    <div class="logo-cloud grid-cols-1 gap-4">
+      {#each games as game, i}
+        <div class="card rounded-xl p-2 h-min flex flex-col md:grid md:grid-rows-1 md:grid-cols-5 md:px-6 md:py-4 md:gap-x-8 md:h-auto variant-soft">
+          <!-- border border-2 -->
+          <div class="w-full flex justify-center md:col-span-2">
+            <a class="p-0" href="{game.html5Link ? game.html5Link : game.link}"><img class="card rounded-xl" src="{game.img}" alt="{game.title} image"/> </a>
           </div>
-          
-          <span>
-            <!-- class="flex justify-between" -->
-            <span class="mr-2">{game.dev}</span>
-            -
-            <i class="ml-2">{game.date.toLocaleDateString()}</i>
-          </span>
+  
+          <div class="flex flex-col justify-between px-1 pt-2 md:col-span-2 md:pb-4 md:px-0">
+            <div>
+              <h4 class="h2 md:h3 mb-4">{game.title}</h4>
+              <p>{game.desc}</p>
+            </div>
+            
+            <span>
+              <!-- class="flex justify-between" -->
+              <span class="mr-2">{game.dev}</span>
+              -
+              <i class="ml-2">{game.date.toLocaleDateString()}</i>
+            </span>
+          </div>
+  
+          <div class="hidden md:grid justify-items-center justify-center content-center">
+            <a href="{game.html5Link ? game.html5Link : game.link}"><span class="badge bg-surface-500 p-2"> <IconExternalLink width="24" height="24" /> </span></a>
+          </div>
+  
         </div>
-
-        <div class="hidden md:grid justify-items-center justify-center content-center">
-          <a href="{game.html5Link ? game.html5Link : game.link}"><span class="badge bg-surface-500 p-2"> <IconExternalLink width="24" height="24" /> </span></a>
+      {/each}
+    </div>
+  
+    <!-- <dl class="list-dl">
+  
+      
+      {#each games as game, i}
+        <div class="grid grid-cols-3 w-full">
+          <img src="{game.img}" />
+  
+  
+          <div class="flex flex-col">
+            <dt class="h6 font-bold">{game.title}</dt>
+            <dd>Play as a guy</dd>
+            <dd>{game.date.toLocaleDateString()}</dd>
+          </div>
+  
+  
+          <a href="{game.link}"><span class="badge bg-surface-500 p-2"> <IconExternalLink width="24" height="24" /> </span></a>
         </div>
-
-      </div>
-    {/each}
+      {/each} 
+    </dl> -->
+  
   </div>
-
-  <!-- <dl class="list-dl">
-
-    
-    {#each games as game, i}
-      <div class="grid grid-cols-3 w-full">
-        <img src="{game.img}" />
-
-
-        <div class="flex flex-col">
-          <dt class="h6 font-bold">{game.title}</dt>
-          <dd>Play as a guy</dd>
-          <dd>{game.date.toLocaleDateString()}</dd>
-        </div>
-
-
-        <a href="{game.link}"><span class="badge bg-surface-500 p-2"> <IconExternalLink width="24" height="24" /> </span></a>
-      </div>
-    {/each} 
-  </dl> -->
-
 </div>

@@ -72,6 +72,7 @@
           resetCamera();
         
           renderer = new THREE.WebGLRenderer({ antialias: true, canvas: el });
+          renderer.clear();
           renderer.setSize( el.width, el.height );
 
           resize();
@@ -188,8 +189,9 @@
         }
       }
 
-      const onPointerDown = (event: MouseEvent) => {
-        if (event.button == 2) {
+      const onPointerDown = (event: MouseEvent | PointerEvent) => {
+        // console.log(event);
+        if (event.button == 2 || (event instanceof PointerEvent && event.pointerType != "mouse")) {
             raycaster.setFromCamera(pointer, camera);
 
             const intersects = raycaster.intersectObjects(scene.children, true).filter((o) => o.object.parent.name === "building");
@@ -204,27 +206,27 @@
             }
             selectionHelper.isDown = false;
             false;
+        }
+
+        if (event.button != 0) {
+          selectionHelper.isDown = false;
+          return;
+        }
+
+        for (const item of selectionBox.collection) {
+          if (item.parent?.name == 'villager') {
+            item.parent.owner.selected = false;
+
+            item.parent.children.forEach(child => {
+              child.material.emissive.set(0x000000);
+            })
           }
+        }
 
-          if (event.button != 0) {
-            selectionHelper.isDown = false;
-            return;
-          }
-
-          for (const item of selectionBox.collection) {
-            if (item.parent?.name == 'villager') {
-              item.parent.owner.selected = false;
-
-              item.parent.children.forEach(child => {
-                child.material.emissive.set(0x000000);
-              })
-            }
-          }
-
-          selectionBox.startPoint.set(
-            ((event.clientX - el_position.left) / el.width) * 2 - 1,
-            - ((event.clientY - el_position.top) / el.height) * 2 + 1,
-            0.5);
+        selectionBox.startPoint.set(
+          ((event.clientX - el_position.left) / el.width) * 2 - 1,
+          - ((event.clientY - el_position.top) / el.height) * 2 + 1,
+          0.5);
       }
 
       const onPointerMove = (event: MouseEvent) => {
@@ -413,9 +415,10 @@
 
 <svelte:window
   on:resize={onResize}
-  on:mousedown={onMouseDown}
-  on:mousemove={onMouseMove}
-  on:mouseup={onMouseUp}
+
+  on:pointerdown={onMouseDown}
+  on:pointermove={onMouseMove}
+  on:pointerup={onMouseUp}
 />
 
 <svelte:head>
@@ -431,15 +434,15 @@
   </style>
 </svelte:head>
 
-{#if loading}
-  <div class="w-full h-full flex items-center flex-col">
-    <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}></IconLoader>
-    <h1 class="h2"> loading.. </h1>
-  </div>
-{/if}
 
 <div class="w-full h-full grid grid-cols-1 grid-rows-1 m-0 overflow-hidden">
-  
+
+  {#if loading}
+    <div class="w-full h-full flex items-center flex-col basis-full">
+      <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}></IconLoader>
+      <h1 class="h2"> loading... </h1>
+    </div>
+  {/if}
   
   <canvas bind:this={el} />
 

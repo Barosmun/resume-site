@@ -236,44 +236,47 @@
   
 </script>
 
-<div class="card px-6 pb-6 pt-2 mb-6 variant-soft-surface">
-  <header class="card-header flex justify-between">
-    <h1 class="h2">About</h1>
-  </header>
-
-  <section class="p-4">
-    I am a <b>Software Engineer</b>, <b>Web Developer</b>, and hobbyist <b>Game Developer</b> with {new Date().getFullYear() - 2021}+ years of professional experience.
-    
-  </section>
-
-</div>
-
-<div class="card px-6 pb-6 pt-2 variant-soft-surface">
-  <header class="card-header flex justify-between">
-    <h1 class="h2">Skills</h1>
-    <RadioGroup>
-      <RadioItem on:change={() => sortSkills('stars')} bind:group={sortby} name="experience" value={'stars'}><IconStars width=24 height=24 /></RadioItem>
-      <RadioItem on:change={() => sortSkills('name')} bind:group={sortby} name="name" value={'name'}><IconAZ width=24 height=24 /></RadioItem>
-      <RadioItem on:change={() => sortSkills('categories')} bind:group={sortby} name="categories" value={'categories'}><IconCategory width=24 height=24 /></RadioItem>
-    </RadioGroup>
-  </header>
+<div class="main">
+  <div class="card px-6 pb-6 pt-2 mb-6 variant-soft-surface">
+    <header class="card-header flex justify-between">
+      <h1 class="h2">About</h1>
+    </header>
   
-  <section class=" {'logo-cloud grid-cols-3 lg:grid-cols-6 gap-1 pt-4'} ">
-    {#each skills as skill (skill) }
-      <div animate:flip={ {duration: 700, easing: quintInOut} } class="{skill.isCategory ? 'h4 col-span-3 lg:col-span-6' :'px-8 pt-4 pb-4 flex flex-col justify-center items-center variant-soft'}">
-        <span class="mb-2">{skill.name}</span>
-        {#if !skill.isCategory}
-          <svelte:component this={skill.icon} width=48 height=48/>
-        
-          <Ratings bind:value={skill.stars} max={skill.stars} class="mt-4">
-            <svelte:fragment slot="empty"></svelte:fragment>
-            <svelte:fragment slot="half"></svelte:fragment>
-            <svelte:fragment slot="full"><IconStarFilled width=12 height=12 /></svelte:fragment>
-          </Ratings>
-        {/if}
-      </div>
-    {/each}
-  </section>
-
+    <section class="p-4">
+      I am a <b>Software Engineer</b>, <b>Web Developer</b>, and hobbyist <b>Game Developer</b> with {new Date().getFullYear() - 2021}+ years of professional experience.
+      
+    </section>
+  
+  </div>
+  
+  <div class="card px-6 pb-6 pt-2 variant-soft-surface">
+    <header class="card-header flex justify-between">
+      <h1 class="h2">Skills</h1>
+      <RadioGroup>
+        <RadioItem on:change={() => sortSkills('stars')} bind:group={sortby} name="experience" value={'stars'}><IconStars width=24 height=24 /></RadioItem>
+        <RadioItem on:change={() => sortSkills('name')} bind:group={sortby} name="name" value={'name'}><IconAZ width=24 height=24 /></RadioItem>
+        <RadioItem on:change={() => sortSkills('categories')} bind:group={sortby} name="categories" value={'categories'}><IconCategory width=24 height=24 /></RadioItem>
+      </RadioGroup>
+    </header>
+    
+    <section class=" {'logo-cloud grid-cols-3 lg:grid-cols-6 gap-1 pt-4'} ">
+      {#each skills as skill (skill) }
+        <div animate:flip={ {duration: 700, easing: quintInOut} } class="{skill.isCategory ? 'h4 col-span-3 lg:col-span-6' :'px-8 pt-4 pb-4 flex flex-col justify-center items-center variant-soft'}">
+          <span class="mb-2">{skill.name}</span>
+          {#if !skill.isCategory}
+            <svelte:component this={skill.icon} width=48 height=48/>
+          
+            <Ratings bind:value={skill.stars} max={skill.stars} class="mt-4">
+              <svelte:fragment slot="empty"></svelte:fragment>
+              <svelte:fragment slot="half"></svelte:fragment>
+              <svelte:fragment slot="full"><IconStarFilled width=12 height=12 /></svelte:fragment>
+            </Ratings>
+          {/if}
+        </div>
+      {/each}
+    </section>
+  
+  </div>
 </div>
+
 
