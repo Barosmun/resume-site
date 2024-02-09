@@ -438,7 +438,6 @@
   </div>
 {/if}
 
-<p> {viewVillager.villager.name} </p>
 <div class="w-full h-full grid grid-cols-1 grid-rows-1 m-0 overflow-hidden">
   
   
