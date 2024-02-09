@@ -137,7 +137,7 @@
   </svelte:fragment>
 
   <!-- Router Slot -->
-  <div class="w-full mx-auto px-8 py-8 flex justify-center" bind:this={slot}>
+  <div class="w-full mx-auto px-8 py-8 flex flex-col items-center" bind:this={slot}>
     <slot />
   </div>
   <!-- ---- / ---- -->

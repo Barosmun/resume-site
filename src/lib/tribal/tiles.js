@@ -4,6 +4,11 @@ export class Tile {
   
   constructor() {
     this.model = new THREE.Group();
+
+    this.model.name = "tile";
+    this.model.owner = this;
+
+    this.distanceThreshold = 6;
   }
   
   

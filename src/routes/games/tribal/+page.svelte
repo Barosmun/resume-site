@@ -1,7 +1,36 @@
 <script lang="ts">
+  import IconLoader from '~icons/tabler/loader'
+  import IconInfoCircle from '~icons/tabler/info-circle'
+  import IconCampfire from '~icons/tabler/campfire'
+  import IconBrandThreejs from '~icons/tabler/brand-threejs'
+  import IconBrandJavascript from '~icons/tabler/brand-javascript'
+  import IconBrandWebGL from '~icons/simple-icons/webgl'
+  import IconBrandSvelte from '~icons/tabler/brand-svelte'
+  import IconPlus from '~icons/tabler/plus'
+
+  let tribalSkills = [
+    {
+      icon: IconBrandThreejs,
+      name: "three.js",
+    },
+    {
+      icon: IconBrandJavascript,
+      name: "javascript",
+    },
+    {
+      icon: IconBrandWebGL,
+      name: "webgl",
+    },
+    {
+      icon: IconBrandSvelte,
+      name: "svelte",
+    },
+
+  ]
+
+
 	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
-  import IconLoader from '~icons/tabler/loader'
   import * as THREE from "three"
   import { MapControls } from 'three/addons/controls/MapControls.js';
   import { SelectionBox } from 'three/addons/interactive/SelectionBox.js';
@@ -9,6 +38,7 @@
   import { Villager } from '$lib/tribal/villager';
   import { Building, Hut, Tree } from '$lib/tribal/buildings';
   import { Tile, TileBasic } from '$lib/tribal/tiles';
+    import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 
 	let loading = true;
 	let el : HTMLCanvasElement;
@@ -19,6 +49,7 @@
   let onMouseMove = (event: MouseEvent) => {}
   let onMouseUp = (event: MouseEvent) => {}
   let onCleanUp = () => {}
+  let onAddVillager = () => {}
 
   function resizeCanvas() {
     if(el){
@@ -46,6 +77,7 @@
   let selectionBox: SelectionBox;
   let selectionHelper: SelectionHelper;
 
+  let max_villagers = 6;
   let villagers: Villager[] = [];
   let buildings: Building[] = [];
   let tiles: Tile[] = [];
@@ -185,27 +217,39 @@
         /* INITIAL VILLAGER */
         {
           let new_villager = addVillager();
-          viewVillager = {villager: new_villager, index: 0};
+          if(new_villager != null){
+            viewVillager = {villager: new_villager, index: 0};
+          }
         }
       }
 
       const onPointerDown = (event: MouseEvent | PointerEvent) => {
         // console.log(event);
-        if (event.button == 2 || (event instanceof PointerEvent && event.pointerType != "mouse")) {
-            raycaster.setFromCamera(pointer, camera);
+        if (event.button == 2) { // || (event instanceof PointerEvent && event.pointerType != "mouse" && villagers.filter((v) => v.selected).length > 0)
+          raycaster.setFromCamera(pointer, camera);
 
-            const intersects = raycaster.intersectObjects(scene.children, true).filter((o) => o.object.parent.name === "building");
+          const intersects = raycaster.intersectObjects(scene.children, true)
 
+          const intersectsBuildings = intersects.filter((o) => o.object.parent.name === "building");
 
-            if (intersects.length > 0) {
+          if (intersectsBuildings.length > 0) {
+
+            villagers.filter((v) => v.selected).forEach(villager => {
+              villager.set_target(intersectsBuildings[0].object.parent.owner);
+            });
+
+          }
+          else{
+            const intersectsTiles = intersects.filter((o) => o.object.parent.name === "tile");
+
+            if (intersectsTiles.length > 0) {
 
               villagers.filter((v) => v.selected).forEach(villager => {
-                villager.set_target(intersects[0].object.parent.owner);
+                villager.set_target(intersectsTiles[0].object.parent.owner);
               });
-
             }
-            selectionHelper.isDown = false;
-            false;
+          selectionHelper.isDown = false;
+          }
         }
 
         if (event.button != 0) {
@@ -222,6 +266,9 @@
             })
           }
         }
+
+        let temp = [...villagers];
+        villagers = [...temp];
 
         selectionBox.startPoint.set(
           ((event.clientX - el_position.left) / el.width) * 2 - 1,
@@ -263,6 +310,9 @@
             }
           }
 
+          let temp = [...villagers];
+          villagers = [...temp];
+
         }
 
       }
@@ -293,18 +343,26 @@
       }
 
       const addVillager = () => {
-        let new_villager = new Villager()
-        villagers.push(new_villager);
 
-        scene.add(new_villager.model);
-        new_villager.target = {
-          model: {
-            position: new THREE.Vector3(0, 0, 8)
-          },
-          distanceThreshold: 1
-        };
+        if(villagers.length < max_villagers){
+          let new_villager = new Villager()
 
-        return new_villager;
+          let temp = [...villagers];
+          temp.push(new_villager);
+          villagers = [...temp];
+  
+          scene.add(new_villager.model);
+          new_villager.target = {
+            model: {
+              position: new THREE.Vector3(0, 0, 8)
+            },
+            distanceThreshold: 1
+          };
+          
+          return new_villager;
+        }
+
+        return null;
       }
       
       const render = () => {
@@ -396,6 +454,7 @@
       onMouseMove = (event: MouseEvent) => {onPointerMove(event);};
       onMouseUp = (event: MouseEvent) => {onPointerUp(event);};
       onCleanUp = () => {cleanUp();};
+      onAddVillager = () => {addVillager();};
 
       setTimeout(() => {
         resizeCanvas();
@@ -423,7 +482,7 @@
 
 <svelte:head>
   <style>
-      canvas { margin: 0; overflow: hidden;}
+      canvas { margin: 0; overflow: hidden; border-radius: 2em;}
 
       .selectBox {
         border: 1px solid rgb(15, 58, 166, 0.6);
@@ -434,16 +493,86 @@
   </style>
 </svelte:head>
 
+<div class="main card w-full h-fit mb-4 variant-soft-surface">
+  <Accordion>
+    <AccordionItem>
+      <svelte:fragment slot="lead"><IconInfoCircle/></svelte:fragment>
+      <svelte:fragment slot="summary">About This Project</svelte:fragment>
+      <svelte:fragment slot="content">
+        <div class="px-6 pb-6 pt-2 mb-6">
+          <header class="card-header flex">
+            <IconCampfire width={48} height={48} />
+            <h1 class="h2 ml-4">Tribal</h1>
+          </header>
+        
+          <section class="p-4">
+            <span class="block mb-2">
+              This project reflects my first foray into <a class="anchor" href="https://threejs.org/">Three.js</a>, primarily as a new avenue for game development. 
+              I was able to pick up the basics of Three.js quickly, and I was wrote some custom steering behaviors for our villagers.
+              I'll continue to update this project moving forward.
+            </span>
+            
+          </section>
+        
+          <footer class="card-footer flex justify-center">
+              <div class="snap-x snap-mandatory scroll-smooth flex gap-4 overflow-x-auto py-2">
+                {#each tribalSkills as item }
+                <div class="snap-start shrink-0 card py-4 w-24 lg:w-32 text-center flex flex-col justify-center items-center variant-soft">
+                  <span class="mb-2">{item.name}</span>
+                  <svelte:component this={item.icon} width=48 height=48/>
+                </div>
+                {/each}
+              </div>
+        
+          </footer>
+        
+        </div>
+      </svelte:fragment>
+    </AccordionItem>
+  </Accordion>
+</div>
+
 
 <div class="w-full h-full grid grid-cols-1 grid-rows-1 m-0 overflow-hidden">
 
+  <canvas class="col-start-1 row-start-1" bind:this={el} />
+
   {#if loading}
-    <div class="w-full h-full flex items-center flex-col basis-full">
-      <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}></IconLoader>
+    <div class="col-start-1 row-start-1 w-full flex items-center flex-col pointer-events-none">
+      <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}/>
       <h1 class="h2"> loading... </h1>
     </div>
+  {:else}
+    <div class="col-start-1 row-start-1 w-full grid grid-cols-3 grid-rows-1 m-0 pointer-events-none p-4 text-center">
+      <div class="w-fit pt-4">
+        <button class="btn btn-lg variant-filled pointer-events-auto" on:click={onAddVillager}>
+          <span><IconPlus /></span>
+          <span>Add Villager</span>
+        </button>
+
+        <h3 class="h3 underline">Villagers</h3>
+        {#each villagers as villager (villager)}
+          <h4 class="h4 {villager.selected ? 'text-secondary-500' : ''}">- {villager.name}</h4>
+        {/each}
+
+      </div>
+    
+      <div class="">
+        <h2 class="h2"> Tribal </h2>
+        <p class="text-xs"> v0.0.1 </p>
+      </div>
+    
+      <div class="place-self-end h-full pt-4">
+        <h3 class="h3 underline">
+          Controls
+        </h3>
+        <p>[MOUSE LEFT] - Select Villagers</p>
+        <p>[MOUSE RIGHT] - Assign Villagers</p>
+        <p>[MOUSE MIDDLE] - Camera Rotate (+shift for Pan)</p>
+        <p>[MOUSE MIDDLE + SHIFT] - Camera Pan</p>
+        <p>[MOUSE SCROLL] - Camera Zoom</p>
+      </div>
+    </div>
   {/if}
-  
-  <canvas bind:this={el} />
 
 </div>
