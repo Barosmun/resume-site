@@ -1,12 +1,21 @@
 <script lang="ts">
-  import IconLoader from '~icons/tabler/loader'
-  import IconInfoCircle from '~icons/tabler/info-circle'
-  import IconCampfire from '~icons/tabler/campfire'
-  import IconBrandThreejs from '~icons/tabler/brand-threejs'
-  import IconBrandJavascript from '~icons/tabler/brand-javascript'
-  import IconBrandWebGL from '~icons/simple-icons/webgl'
-  import IconBrandSvelte from '~icons/tabler/brand-svelte'
-  import IconPlus from '~icons/tabler/plus'
+  import IconLoader from '~icons/tabler/loader';
+  import IconInfoCircle from '~icons/tabler/info-circle';
+  import IconCampfire from '~icons/tabler/campfire';
+  import IconBrandThreejs from '~icons/tabler/brand-threejs';
+  import IconBrandJavascript from '~icons/tabler/brand-javascript';
+  import IconBrandWebGL from '~icons/simple-icons/webgl';
+  import IconBrandSvelte from '~icons/tabler/brand-svelte';
+  import IconPlus from '~icons/tabler/plus';
+  import IconFood from '~icons/tabler/tools-kitchen-2';
+  import IconProduce from '~icons/tabler/carrot';
+  import IconGrain from '~icons/tabler/growth';
+  import IconMeat from '~icons/tabler/meat';
+  import IconFish from '~icons/tabler/fish';
+  import IconEgg from '~icons/tabler/egg-fried';
+  import IconWood from '~icons/tabler/tree';
+  import IconStone from '~icons/tabler/mountain';
+
 
   let tribalSkills = [
     {
@@ -76,6 +85,19 @@
 
   let selectionBox: SelectionBox;
   let selectionHelper: SelectionHelper;
+
+  let stats = {
+    //foods
+    produce: 50,
+    grain: 0,
+    meat: 25,
+    fish: 0,
+    egg: 0,
+
+
+    wood: 0,
+    stone: 0
+  }
 
   let max_villagers = 6;
   let villagers: Villager[] = [];
@@ -562,15 +584,38 @@
         <p class="text-xs"> v0.0.1 </p>
       </div>
     
-      <div class="place-self-end h-full pt-4">
-        <h3 class="h3 underline">
-          Controls
-        </h3>
-        <p>[MOUSE LEFT] - Select Villagers</p>
-        <p>[MOUSE RIGHT] - Assign Villagers</p>
-        <p>[MOUSE MIDDLE] - Camera Rotate (+shift for Pan)</p>
-        <p>[MOUSE MIDDLE + SHIFT] - Camera Pan</p>
-        <p>[MOUSE SCROLL] - Camera Zoom</p>
+      <div class="place-self-end h-full pt-4 flex flex-col justify-between">
+
+        <div class="flex justify-around">
+          <Accordion class="pointer-events-auto w-min">
+            <AccordionItem class="w-min">
+              <svelte:fragment slot="summary">
+                <h4 class="h4 flex item-center gap-x-2"><IconFood />{stats.produce + stats.grain + stats.meat + stats.fish + stats.egg}</h4>
+              </svelte:fragment>
+              <svelte:fragment slot="content">
+                <span class="flex item-center gap-x-2 "> <IconProduce />{stats.produce} </span>
+                <span class="flex item-center gap-x-2"> <IconGrain />{stats.grain} </span>
+                <span class="flex item-center gap-x-2"> <IconMeat />{stats.meat} </span>
+                <span class="flex item-center gap-x-2"> <IconFish />{stats.fish} </span>
+                <span class="flex item-center gap-x-2"> <IconEgg />{stats.egg} </span>
+              </svelte:fragment>
+            </AccordionItem>
+          </Accordion>
+          <h4 class="h4 flex items-center gap-x-2 h-min py-1.5 px-4"><IconWood/>{stats.wood}</h4>
+          <h4 class="h4 flex items-center gap-x-2 h-min py-1.5 px-4"><IconStone/>{stats.stone}</h4>
+        </div>
+
+        <div>
+          <h3 class="h3 underline">
+            Controls
+          </h3>
+          <p>[MOUSE LEFT] - Select Villagers</p>
+          <p>[MOUSE RIGHT] - Assign Villagers</p>
+          <p>[MOUSE MIDDLE] - Camera Rotate (+shift for Pan)</p>
+          <p>[MOUSE MIDDLE + SHIFT] - Camera Pan</p>
+          <p>[MOUSE SCROLL] - Camera Zoom</p>
+        </div>
+
       </div>
     </div>
   {/if}
