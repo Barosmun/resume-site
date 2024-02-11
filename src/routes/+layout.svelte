@@ -92,27 +92,27 @@
       padding="px-4 py-2 lg:px-16"
       >
 
-        <TabAnchor href={base + '/'} selected={$page.url.pathname === '/' || $page.url.pathname === '/resume-site'}>
+        <TabAnchor href={$page.url.pathname === '/' || $page.url.pathname === '/resume-site' ? undefined : base + '/' } selected={$page.url.pathname === '/' || $page.url.pathname === '/resume-site'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconHome width="32" height="32" /> </div></svelte:fragment>
           <span>home</span> 
         </TabAnchor>
       
-        <TabAnchor href={base + '/work'} selected={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work'}>
+        <TabAnchor href={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work' ? undefined :base + '/work'} selected={$page.url.pathname === '/work' || $page.url.pathname === '/resume-site/work'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBriefcase width="32" height="32"/> </div></svelte:fragment>
           <span>work</span>
         </TabAnchor>
         
-        <TabAnchor href={base + '/games'} selected={$page.url.pathname === '/games' || $page.url.pathname === '/resume-site/games'}>
+        <TabAnchor href={$page.url.pathname === '/games' || $page.url.pathname === '/resume-site/games' ? undefined : base + '/games'} selected={$page.url.pathname === '/games' || $page.url.pathname === '/resume-site/games'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconDeviceGamepad width="32" height="32"/> </div></svelte:fragment>
           <span>games</span>
         </TabAnchor>
         
-        <TabAnchor href={base + '/apps'} selected={$page.url.pathname === '/apps' || $page.url.pathname === '/resume-site/apps'}>
+        <TabAnchor href={$page.url.pathname === '/apps' || $page.url.pathname === '/resume-site/apps' ? undefined : base + '/apps'} selected={$page.url.pathname === '/apps' || $page.url.pathname === '/resume-site/apps'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconApps width="32" height="32"/> </div></svelte:fragment>
           <span>apps</span>
         </TabAnchor>
 
-        <TabAnchor href={base + '/games/tribal'} selected={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal'}>
+        <TabAnchor href={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal' ? undefined : base + '/games/tribal'} selected={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconCampfire width="32" height="32"/> </div></svelte:fragment>
           <span>tribal</span>
         </TabAnchor>
