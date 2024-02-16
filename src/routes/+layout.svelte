@@ -112,10 +112,10 @@
           <span>apps</span>
         </TabAnchor>
 
-        <TabAnchor href={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal' ? undefined : base + '/games/tribal'} selected={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal'}>
+        <!-- <TabAnchor href={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal' ? undefined : base + '/games/tribal'} selected={$page.url.pathname === '/games/tribal' || $page.url.pathname === '/resume-site/games/tribal'}>
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconCampfire width="32" height="32"/> </div></svelte:fragment>
           <span>tribal</span>
-        </TabAnchor>
+        </TabAnchor> -->
 
         <!-- <TabAnchor href="https://github.com/barosmun">
           <svelte:fragment slot="lead"><div class="flex justify-center"> <IconBrandGithub width="32" height="32"/> </div></svelte:fragment>
