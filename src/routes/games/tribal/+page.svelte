@@ -515,6 +515,63 @@
   </style>
 </svelte:head>
 
+
+<div class="w-full h-full grid grid-cols-1 grid-rows-1 m-0 overflow-hidden">
+
+  <canvas class="col-start-1 row-start-1" bind:this={el} />
+
+  {#if loading}
+    <div class="col-start-1 row-start-1 w-full flex items-center flex-col pointer-events-none">
+      <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}/>
+      <h1 class="h2"> loading... </h1>
+    </div>
+  {:else}
+    <div class="col-start-1 row-start-1 w-full grid grid-cols-3 grid-rows-1 m-0 pointer-events-none p-4 text-center z-50">
+      <div class="w-fit pt-4">
+        <button class="btn btn-lg variant-filled pointer-events-auto" on:click={onAddVillager}>
+          <span><IconPlus /></span>
+          <span class="max-sm:hidden">Add Villager</span>
+        </button>
+
+        <h3 class="h3 underline">Villagers</h3>
+        {#each villagers as villager (villager)}
+          <h4 class="h4 {villager.selected ? 'text-secondary-500' : ''}">- {villager.name}</h4>
+        {/each}
+
+      </div>
+    
+      <div class="max-sm:hidden">
+        <h2 class="h2"> Tribal </h2>
+        <p class="text-xs"> v0.0.2 </p>
+      </div>
+    
+      <div class="col-start-3 justify-end pt-4">
+
+        <div class="flex max-sm:flex-col justify-around">
+          <Accordion class="pointer-events-auto w-min">
+            <AccordionItem class="w-min">
+              <svelte:fragment slot="summary">
+                <h4 class="h4 flex item-center gap-x-2"><IconFood />{stats.produce + stats.grain + stats.meat + stats.fish + stats.egg}</h4>
+              </svelte:fragment>
+              <svelte:fragment slot="content">
+                <span class="flex item-center gap-x-2 "> <IconProduce />{stats.produce} </span>
+                <span class="flex item-center gap-x-2"> <IconGrain />{stats.grain} </span>
+                <span class="flex item-center gap-x-2"> <IconMeat />{stats.meat} </span>
+                <span class="flex item-center gap-x-2"> <IconFish />{stats.fish} </span>
+                <span class="flex item-center gap-x-2"> <IconEgg />{stats.egg} </span>
+              </svelte:fragment>
+            </AccordionItem>
+          </Accordion>
+          <h4 class="h4 flex items-center gap-x-2 h-min py-1.5 px-4"><IconWood/>{stats.wood}</h4>
+          <h4 class="h4 flex items-center gap-x-2 h-min py-1.5 px-4"><IconStone/>{stats.stone}</h4>
+        </div>
+
+      </div>
+    </div>
+  {/if}
+
+</div>
+
 <div class="main card w-full h-fit mb-4 variant-soft-surface">
   <Accordion>
     <AccordionItem>
@@ -535,6 +592,18 @@
             </span>
             
           </section>
+          
+          <section class="p-4">
+            <h3 class="h3 underline">
+              Controls
+            </h3>
+            <p>[MOUSE LEFT] - Select Villagers</p>
+            <p>[MOUSE RIGHT] - Assign Villagers</p>
+            <p>[MOUSE MIDDLE] - Camera Rotate</p>
+            <p>[MOUSE MIDDLE + SHIFT] - Camera Pan</p>
+            <p>[MOUSE SCROLL] - Camera Zoom</p>
+          </section>
+
         
           <footer class="card-footer flex justify-center">
               <div class="snap-x snap-mandatory scroll-smooth flex gap-4 overflow-x-auto py-2">
@@ -545,6 +614,7 @@
                 </div>
                 {/each}
               </div>
+              
         
           </footer>
         
@@ -552,72 +622,4 @@
       </svelte:fragment>
     </AccordionItem>
   </Accordion>
-</div>
-
-
-<div class="w-full h-full grid grid-cols-1 grid-rows-1 m-0 overflow-hidden">
-
-  <canvas class="col-start-1 row-start-1" bind:this={el} />
-
-  {#if loading}
-    <div class="col-start-1 row-start-1 w-full flex items-center flex-col pointer-events-none">
-      <IconLoader class="animate-spin-slow" width={"50%"} height={"50%"}/>
-      <h1 class="h2"> loading... </h1>
-    </div>
-  {:else}
-    <div class="col-start-1 row-start-1 w-full grid grid-cols-3 grid-rows-1 m-0 pointer-events-none p-4 text-center">
-      <div class="w-fit pt-4">
-        <button class="btn btn-lg variant-filled pointer-events-auto" on:click={onAddVillager}>
-          <span><IconPlus /></span>
-          <span>Add Villager</span>
-        </button>
-
-        <h3 class="h3 underline">Villagers</h3>
-        {#each villagers as villager (villager)}
-          <h4 class="h4 {villager.selected ? 'text-secondary-500' : ''}">- {villager.name}</h4>
-        {/each}
-
-      </div>
-    
-      <div class="">
-        <h2 class="h2"> Tribal </h2>
-        <p class="text-xs"> v0.0.1 </p>
-      </div>
-    
-      <div class="place-self-end h-full pt-4 flex flex-col justify-between">
-
-        <div class="flex justify-around">
-          <Accordion class="pointer-events-auto w-min">
-            <AccordionItem class="w-min">
-              <svelte:fragment slot="summary">
-                <h4 class="h4 flex item-center gap-x-2"><IconFood />{stats.produce + stats.grain + stats.meat + stats.fish + stats.egg}</h4>
-              </svelte:fragment>
-              <svelte:fragment slot="content">
-                <span class="flex item-center gap-x-2 "> <IconProduce />{stats.produce} </span>
-                <span class="flex item-center gap-x-2"> <IconGrain />{stats.grain} </span>
-                <span class="flex item-center gap-x-2"> <IconMeat />{stats.meat} </span>
-                <span class="flex item-center gap-x-2"> <IconFish />{stats.fish} </span>
-                <span class="flex item-center gap-x-2"> <IconEgg />{stats.egg} </span>
-              </svelte:fragment>
-            </AccordionItem>
-          </Accordion>
-          <h4 class="h4 flex items-center gap-x-2 h-min py-1.5 px-4"><IconWood/>{stats.wood}</h4>
-          <h4 class="h4 flex items-center gap-x-2 h-min py-1.5 px-4"><IconStone/>{stats.stone}</h4>
-        </div>
-
-        <div>
-          <h3 class="h3 underline">
-            Controls
-          </h3>
-          <p>[MOUSE LEFT] - Select Villagers</p>
-          <p>[MOUSE RIGHT] - Assign Villagers</p>
-          <p>[MOUSE MIDDLE] - Camera Rotate (+shift for Pan)</p>
-          <p>[MOUSE MIDDLE + SHIFT] - Camera Pan</p>
-          <p>[MOUSE SCROLL] - Camera Zoom</p>
-        </div>
-
-      </div>
-    </div>
-  {/if}
-
 </div>
