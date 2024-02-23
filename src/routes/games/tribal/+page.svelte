@@ -34,10 +34,11 @@
       icon: IconBrandSvelte,
       name: "svelte",
     },
-
+    
   ]
-
-
+  
+  
+  import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
   import * as THREE from "three"
@@ -47,7 +48,6 @@
   import { Villager } from '$lib/tribal/villager';
   import { Building, Hut, Tree } from '$lib/tribal/buildings';
   import { Tile, TileBasic } from '$lib/tribal/tiles';
-    import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 
 	let loading = true;
 	let el : HTMLCanvasElement;
@@ -76,7 +76,10 @@
   let renderer: THREE.WebGLRenderer;
   let pointer: THREE.Vector2;
   let light_ambient: THREE.AmbientLight;
-
+  let sky_background = 0x4CBCF0;
+  
+  let sun_color = 0xfff0ee;
+  let sun_group: THREE.Group;
   let sun: THREE.DirectionalLight;
 
   let camera_controls: MapControls;
@@ -85,6 +88,13 @@
 
   let selectionBox: SelectionBox;
   let selectionHelper: SelectionHelper;
+
+  let day_length = 1000; // 1000
+  let day_time = 0; // 0
+  let day_count = 0; // 0
+
+  let villager_appetite = 3; // 3
+  
 
   let stats = {
     //foods
@@ -133,7 +143,7 @@
           
           pointer = new THREE.Vector2();
   
-          scene.background = new THREE.Color(0x4CBCF0);
+          scene.background = new THREE.Color(sky_background);
 
           light_ambient = new THREE.AmbientLight(0xa0a0a0); // soft white light
           scene.add(light_ambient);
@@ -141,20 +151,24 @@
 
         /* MAKE SUN */
         {
-          sun = new THREE.DirectionalLight(0xfff0ee, 1);
-          const geo_sun = new THREE.SphereGeometry(1, 8, 4);
-          const mat_sun = new THREE.MeshToonMaterial({ color: 0xF9D71C });
+          sun = new THREE.DirectionalLight(sun_color, 1);
+
+          sun.castShadow = false;
+          sun.target = new THREE.Object3D();
+
+          // const geo_sun = new THREE.SphereGeometry(1, 8, 4);
+          // const mat_sun = new THREE.MeshToonMaterial({ color: 0xF9D71C });
           // const sun_debug = new THREE.Mesh(geo_sun, mat_sun);
   
   
-          const sun_group = new THREE.Group();
+          sun_group = new THREE.Group();
           sun_group.add(sun);
           // sun_group.add(sun_debug);
   
           scene.add(sun_group);
   
-          sun.position.set(500, 1000, 0);
-          // sun_debug.position.set(500, 1000, 0);
+          sun.position.set(100, 50, 0);
+          // sun_debug.position.set(100, 50, 0);
         }
 
         /* CAMERA CONTROLS SETUP */
@@ -410,6 +424,41 @@
        
       }
 
+      const villagerEat = (myFood: "produce" | "grain" | "meat" | "fish" | "egg") => {
+
+        if(stats[myFood] >= villager_appetite){
+          stats[myFood] -= villager_appetite
+          return 0;
+        }
+        else{
+          stats[myFood] = 0;
+          return villager_appetite - stats[myFood];
+        }
+      }
+
+      const onNewDay = () => {
+        let food_resources: ("produce" | "grain" | "meat" | "fish" | "egg")[]
+        = ["produce", "grain", "meat", "fish", "egg"];
+
+        food_resources = food_resources.filter(x => stats[x] > 0);
+
+        villagerLoop:
+        for(let v = 0; v < villagers.length; v++){
+          let rand_resource = food_resources[Math.floor(Math.random()*food_resources.length)];
+          while(villagerEat(rand_resource) != 0){
+            food_resources = food_resources.filter(x => stats[x] > 0);
+
+            if(food_resources.length == 0){
+              //Starve
+              break villagerLoop;
+            }
+
+            rand_resource = food_resources[Math.floor(Math.random()*food_resources.length)];
+
+          }
+        }
+      }
+
       const animate = () => {
         requestAnimationFrame(animate)
 
@@ -454,6 +503,29 @@
 
           villager.beingPushed = false;
           });
+        }
+
+        /* SUN AND DAY EFFECTS */
+        {
+          if(++day_time >= day_length){
+            day_time = 0;
+            day_count++;
+            sun_group.rotation.y = 0;
+            onNewDay();
+          }
+
+          sun_group.rotation.y = 2 * Math.PI * (day_time / day_length);
+
+          let timeFromNoon = (Math.abs((day_length/2) - day_time)) / (day_length/2);
+
+          let sunNewRed = Math.floor(0x6f * (1-timeFromNoon) + 0x90); //0xff
+          let sunNewGreen = Math.floor(0xb0 * (1-timeFromNoon) + 0x40); //0xf0
+          let sunNewBlue = Math.floor(0xde * (1-timeFromNoon) + 0x10); //0xee
+          let sunNewColor = `#${sunNewRed.toString(16).padStart(2, '0')}${sunNewGreen.toString(16).padStart(2, '0')}${sunNewBlue.toString(16).padStart(2, '0')}`;
+          sun.color = new THREE.Color(sunNewColor);
+
+          // scene.background = new THREE.Color(sky_background)
+
         }
 
         render()
@@ -542,7 +614,9 @@
     
       <div class="max-sm:hidden">
         <h2 class="h2"> Tribal </h2>
-        <p class="text-xs"> v0.0.2 </p>
+        <p class="text-xs"> v0.0.3 </p>
+        <progress value={day_time} max={day_length} />
+        <h4 class="h4"> Day {day_count+1} </h4>
       </div>
     
       <div class="col-start-3 justify-end pt-4">
@@ -572,7 +646,7 @@
 
 </div>
 
-<div class="main card w-full h-fit mb-4 variant-soft-surface">
+<div class="main card w-full h-fit mb-4 variant-soft-surface mt-2">
   <Accordion>
     <AccordionItem>
       <svelte:fragment slot="lead"><IconInfoCircle/></svelte:fragment>

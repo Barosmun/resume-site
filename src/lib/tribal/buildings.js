@@ -79,8 +79,8 @@ export class Tree extends Building{
     const mat_leaves = new THREE.MeshToonMaterial( { color: 0x516E2C } );
 
 
-    const geo_tree = new THREE.CylinderGeometry( 0.5, 1.25, 8, 5 );
-    const geo_leaves = new THREE.DodecahedronGeometry(4, 0);
+    const geo_tree = new THREE.CylinderGeometry( 0.5, 1.25, 7, 5 );
+    const geo_leaves = new THREE.OctahedronGeometry(3, 1);
 
     const tree = new THREE.Mesh(geo_tree, mat_tree);
     const leaves = new THREE.Mesh(geo_leaves, mat_leaves);
@@ -94,9 +94,9 @@ export class Tree extends Building{
     this.model.add(tree);
     this.model.add(leaves);
 
-    tree.position.set(0, 4, 0);
-    leaves.position.set(0, 4 + 2.5, 0);
-    leaves.scale.set(1, 0.5, 1);
+    tree.position.set(0, 3.5, 0);
+    leaves.position.set(0, 3.5 + 3, 0);
+    // leaves.scale.set(1, 0.5, 1);
 
     /* MAKE TREE BOUNDING BOX */
     this.bb = new THREE.Box3(new THREE.Vector3(), new THREE.Vector3());

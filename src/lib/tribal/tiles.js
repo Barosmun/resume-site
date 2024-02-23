@@ -28,7 +28,7 @@ export class TileBasic extends Tile{
     /* MAKE TILE MODEL */
     const geo_tile = new THREE.CylinderGeometry( 10, 10, 2, 6);
     const mat_tile = new THREE.MeshToonMaterial( { 
-      color: `#${(0x6F + r_variation).toString(16) }${(0x86 + g_variation).toString(16) }${(0x46 + b_variation).toString(16) }`
+      color: `#${(0x6F + r_variation).toString(16).padStart(2, '0') }${(0x86 + g_variation).toString(16).padStart(2, '0') }${(0x46 + b_variation).toString(16).padStart(2, '0') }`
      } );
     const tile = new THREE.Mesh( geo_tile, mat_tile );
 
