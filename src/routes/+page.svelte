@@ -36,11 +36,12 @@
   //Dbs
   import IconSql from '~icons/tabler/sql'
   import IconBrandMongodb from '~icons/tabler/brand-mongodb'
-  // import IconBrandCouchdb from '~icons/tabler/brand-couchdb'
+  import IconBrandCouchdb from '~icons/tabler/brand-couchdb'
 
   //Game Dev
   import IconBrandGamemaker from '~icons/simple-icons/gamemaker'
   import IconBrandThreejs from '~icons/tabler/brand-threejs'
+  import IconBrandGodot from '~icons/simple-icons/godotengine'
   import IconBrandBlender from '~icons/tabler/brand-blender'
 
   //Tools
@@ -102,11 +103,11 @@
       name: "svelte",
       stars: 2
     },
-    // {
-    //   icon: IconBrandNode,
-    //   name: "node",
-    //   stars: 2
-    // },
+    {
+      icon: IconBrandNode,
+      name: "node",
+      stars: 2
+    },
     {
       icon: IconBrandJQuery,
       name: "jquery",
@@ -139,13 +140,13 @@
       stars: 3
     },
     {
-      icon: IconBrandBootstrap,
-      name: "bootstrap",
+      icon: IconBrandTailwind,
+      name: "tailwind",
       stars: 3
     },
     {
-      icon: IconBrandTailwind,
-      name: "tailwind",
+      icon: IconBrandBootstrap,
+      name: "bootstrap",
       stars: 2
     },
     // -------- DATABASES --------
@@ -164,6 +165,11 @@
       name: "mongo",
       stars: 1
     },
+    {
+      icon: IconBrandCouchdb,
+      name: "couchdb",
+      stars: 1
+    },
     // -------- GAME DEVELOPMENT --------
     {
       isCategory: true,
@@ -180,27 +186,32 @@
     //   name: "three.js",
     //   stars: 1
     // },
-    // {
-    //   icon: IconBrandBlender,
-    //   name: "blender",
-    //   stars: 1
-    // },
+    {
+      icon: IconBrandGodot,
+      name: "godot",
+      stars: 2
+    },
+    {
+      icon: IconBrandBlender,
+      name: "blender",
+      stars: 1
+    },
     // -------- TOOLS --------
-    // {
-    //   isCategory: true,
-    //   name: 'Tools',
-    //   stars: 0
-    // },
-    // {
-    //   icon: IconBrandGit,
-    //   name: "git",
-    //   stars: 3
-    // },
-    // {
-    //   icon: IconBrandVscode,
-    //   name: "vs\xa0code",
-    //   stars: 3
-    // },
+    {
+      isCategory: true,
+      name: 'Tools',
+      stars: 0
+    },
+    {
+      icon: IconBrandGit,
+      name: "git",
+      stars: 3
+    },
+    {
+      icon: IconBrandVscode,
+      name: "vs\xa0code",
+      stars: 3
+    },
     // {
     //   icon: IconBrandAzure,
     //   name: "azure",
