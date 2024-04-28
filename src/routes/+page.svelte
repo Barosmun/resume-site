@@ -103,11 +103,11 @@
       name: "svelte",
       stars: 2
     },
-    {
-      icon: IconBrandNode,
-      name: "node",
-      stars: 2
-    },
+    // {
+    //   icon: IconBrandNode,
+    //   name: "node",
+    //   stars: 2
+    // },
     {
       icon: IconBrandJQuery,
       name: "jquery",
@@ -160,16 +160,16 @@
       name: "sql\xa0",
       stars: 1
     },
-    {
-      icon: IconBrandMongodb,
-      name: "mongo",
-      stars: 1
-    },
-    {
-      icon: IconBrandCouchdb,
-      name: "couchdb",
-      stars: 1
-    },
+    // {
+    //   icon: IconBrandMongodb,
+    //   name: "mongo",
+    //   stars: 1
+    // },
+    // {
+    //   icon: IconBrandCouchdb,
+    //   name: "couchdb",
+    //   stars: 1
+    // },
     // -------- GAME DEVELOPMENT --------
     {
       isCategory: true,
@@ -191,27 +191,27 @@
       name: "godot",
       stars: 2
     },
-    {
-      icon: IconBrandBlender,
-      name: "blender",
-      stars: 1
-    },
+    // {
+    //   icon: IconBrandBlender,
+    //   name: "blender",
+    //   stars: 1
+    // },
     // -------- TOOLS --------
-    {
-      isCategory: true,
-      name: 'Tools',
-      stars: 0
-    },
-    {
-      icon: IconBrandGit,
-      name: "git",
-      stars: 3
-    },
-    {
-      icon: IconBrandVscode,
-      name: "vs\xa0code",
-      stars: 3
-    },
+    // {
+    //   isCategory: true,
+    //   name: 'Tools',
+    //   stars: 0
+    // },
+    // {
+    //   icon: IconBrandGit,
+    //   name: "git",
+    //   stars: 3
+    // },
+    // {
+    //   icon: IconBrandVscode,
+    //   name: "vs\xa0code",
+    //   stars: 3
+    // },
     // {
     //   icon: IconBrandAzure,
     //   name: "azure",
