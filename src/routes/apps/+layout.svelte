@@ -33,11 +33,11 @@
       route: '/apps/tile-mapper'
     },
     
-    {
-      title: "Tribal",
-      icon: IconCampfire,
-      route:'/games/tribal'
-    },
+    // {
+    //   title: "Tribal",
+    //   icon: IconCampfire,
+    //   route:'/games/tribal'
+    // },
   ]
 
   afterNavigate(() => {
