@@ -7,5 +7,5 @@
 </script>
 
 <a href="https://github.com/barosmun"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandGithub width={size} height={size}/></button></a>
-<a href="https://www.linkedin.com/in/barrett-osmundson/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandLinkedin width={size} height={size}/></button></a>
+<a href="https://www.linkedin.com/in/barosmun/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandLinkedin width={size} height={size}/></button></a>
 <a href="https://barosmun.itch.io/"><button type="button" class="btn-icon max-md:btn-icon-sm variant-ghost-surface border-2"><IconBrandItch width={size} height={size}/></button></a>
