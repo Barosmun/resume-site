@@ -16,8 +16,9 @@
   import IconBrandJava from '~icons/tabler/coffee'
   import IconBrandPython from '~icons/tabler/brand-python'
   import IconBrandCpp from '~icons/tabler/brand-cpp'
-  // import IconBrandHaskell from '~icons/simple-icons/haskell'
-  // import IconBrandRacket from '~icons/simple-icons/racket'
+  import IconBrandCSharp from '~icons/tabler/brand-c-sharp'
+  import IconBrandHaskell from '~icons/simple-icons/haskell'
+  import IconBrandRacket from '~icons/simple-icons/racket'
 
   //Frameworks
   import IconBrandAngular from '~icons/tabler/brand-angular'
@@ -26,6 +27,7 @@
   import IconBrandReact from '~icons/tabler/brand-react'
   import IconBrandVue from '~icons/tabler/brand-vue'
   import IconBrandJQuery from '~icons/simple-icons/jquery'
+  import IconBrandExpress from '~icons/simple-icons/express'
 
   //Web Design
   import IconHtml from '~icons/tabler/html'
@@ -79,12 +81,30 @@
     {
       icon: IconBrandGolang,
       name: "go",
-      stars: 1
+      stars: 2
     },
     {
       icon: IconBrandCpp,
       name: "c++",
       stars: 1
+    },
+    {
+      icon: IconBrandCSharp,
+      name: "c#",
+      stars: 1,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandRacket,
+      name: "racket",
+      stars: 1,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandHaskell,
+      name: "haskell",
+      stars: 1,
+      isVerbose: true
     },
 
     // -------- FRAMEWORKS --------
@@ -103,16 +123,12 @@
       name: "svelte",
       stars: 2
     },
-    // {
-    //   icon: IconBrandNode,
-    //   name: "node",
-    //   stars: 2
-    // },
-    // {
-    //   icon: IconBrandJQuery,
-    //   name: "jquery",
-    //   stars: 2
-    // },
+    {
+      icon: IconBrandJQuery,
+      name: "jquery",
+      stars: 2,
+      isVerbose: true
+    },
     {
       icon: IconBrandReact,
       name: "react",
@@ -149,6 +165,43 @@
       name: "bootstrap",
       stars: 2
     },
+    // -------- TOOLS --------
+    {
+      isCategory: true,
+      name: 'Tools',
+      stars: 0,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandGit,
+      name: "git",
+      stars: 3,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandVscode,
+      name: "vs\xa0code",
+      stars: 3,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandNode,
+      name: "node",
+      stars: 2,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandAzure,
+      name: "azure",
+      stars: 2,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandExpress,
+      name: "express",
+      stars: 1,
+      isVerbose: true
+    },
     // -------- DATABASES --------
     {
       isCategory: true,
@@ -165,11 +218,12 @@
       name: "mongo",
       stars: 1
     },
-    // {
-    //   icon: IconBrandCouchdb,
-    //   name: "couchdb",
-    //   stars: 1
-    // },
+    {
+      icon: IconBrandCouchdb,
+      name: "couchdb",
+      stars: 1,
+      isVerbose: true
+    },
     // -------- GAME DEVELOPMENT --------
     {
       isCategory: true,
@@ -181,45 +235,29 @@
       name: "gamemaker",
       stars: 3
     },
-    // {
-    //   icon: IconBrandThreejs,
-    //   name: "three.js",
-    //   stars: 1
-    // },
     {
       icon: IconBrandGodot,
       name: "godot",
       stars: 2
     },
-    // {
-    //   icon: IconBrandBlender,
-    //   name: "blender",
-    //   stars: 1
-    // },
-    // -------- TOOLS --------
-    // {
-    //   isCategory: true,
-    //   name: 'Tools',
-    //   stars: 0
-    // },
-    // {
-    //   icon: IconBrandGit,
-    //   name: "git",
-    //   stars: 3
-    // },
-    // {
-    //   icon: IconBrandVscode,
-    //   name: "vs\xa0code",
-    //   stars: 3
-    // },
-    // {
-    //   icon: IconBrandAzure,
-    //   name: "azure",
-    //   stars: 2
-    // },
+    {
+      icon: IconBrandThreejs,
+      name: "three.js",
+      stars: 1,
+      isVerbose: true
+    },
+    {
+      icon: IconBrandBlender,
+      name: "blender",
+      stars: 1,
+      isVerbose: true
+    },
+
+    
   ]
 
   var skills = [...skills_full];
+  var showVerbose = false;
 
   let sortby = 'stars';
   sortSkills(sortby);
@@ -242,7 +280,15 @@
         skills = [...skills_full];
         break;
     }
+    if(!showVerbose){
+      skills = skills.filter(s => !s.isVerbose);
+    }
     skills = skills;
+  }
+
+  function toggleVerbose(){
+    showVerbose = !showVerbose;
+    sortSkills(sortby);
   }
   
 </script>
@@ -285,6 +331,16 @@
         </div>
       {/each}
     </section>
+
+    <div class="flex justify-center pt-4">
+      <button on:click={() => toggleVerbose()} type="button" class="btn variant-filled px-6 py-3">
+        {#if !showVerbose}
+          Show More
+        {:else}
+          Show Less
+        {/if}
+      </button>
+    </div>
   
   </div>
 </div>
