@@ -8,8 +8,10 @@
   import IconCirclex from '~icons/tabler/circle-x';
   import IconPencilOff from '~icons/tabler/pencil-off';
   import IconPencil from '~icons/tabler/pencil';
+  import IconInfoCircle from '~icons/tabler/info-circle';
 
   import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
+  import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 
   import { fade, fly } from 'svelte/transition'
 
@@ -193,7 +195,22 @@
         </button> -->
 
       {/if}
+      
     </div>
+    <Accordion>
+      <AccordionItem>
+        <svelte:fragment slot="lead"><IconInfoCircle width="32" height="32" /></svelte:fragment>
+        <svelte:fragment slot="summary">Note on Methodology</svelte:fragment>
+        <svelte:fragment slot="content">
+          The set of states included in this app is a reflection of the 193 <a class="anchor" href="https://www.un.org/en/about-us/member-states">United Nation member states</a> as well as the 2 <a class="anchor" href="https://www.un.org/en/about-us/non-member-states">permanent non-member observer states</a>.
+          <br />
+          Each flag displayed is pulled from its state's default english <a class="anchor" href="https://www.wikipedia.org/">Wikipedia</a> page. 
+          The use, inclusion, or exclusion of a flag is not a political comment, but a reflection of the <a class="anchor" href="https://www.un.org/">United Nations</a> and <a class="anchor" href="https://www.wikipedia.org/">Wikimedia Commons</a>.
+          <br />
+          As the world changes, it's possible that some of the flags and names displayed may become outdated or fail to load from <a class="anchor" href="https://www.wikipedia.org/">Wikimedia Commons</a>.
+        </svelte:fragment>
+      </AccordionItem>
+    </Accordion>
   </div>
 {:else}
   <div class="card py-4 h-full flex flex-col items-center">
