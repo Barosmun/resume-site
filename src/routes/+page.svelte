@@ -3,6 +3,7 @@
 
   import { flip } from 'svelte/animate';
   import { quintInOut } from 'svelte/easing';
+  import { scale } from 'svelte/transition';
 
   import IconStarFilled from '~icons/tabler/star-filled'
   import IconCategory from '~icons/tabler/category-filled'
@@ -50,6 +51,13 @@
   import IconBrandGit from '~icons/tabler/brand-git'
   import IconBrandVscode from '~icons/tabler/brand-vscode'
   import IconBrandAzure from '~icons/tabler/brand-azure'
+
+  let skillsHeight: number;
+  let previousSkillsHeight: number = 0;
+
+  let skillsDelay: number = 0;
+
+  $: skillsHeight, onSkillHeightChange()
 
   var skills_full = [
     // -------- LANGUAGES --------
@@ -289,9 +297,30 @@
   function toggleVerbose(){
     showVerbose = !showVerbose;
     sortSkills(sortby);
+    
+  }
+
+  function onSkillHeightChange(){
+    if(skillsHeight > previousSkillsHeight){
+      //skillsExpanding
+      skillsDelay = 0;
+    }
+    else{
+      //skillsContracting
+      skillsDelay = 350;
+    }
+    previousSkillsHeight = skillsHeight;
   }
   
 </script>
+
+<style>
+  .skills-container {
+    height: calc(var(--skillsHeight) * 1px);
+    transition: height 350ms ease-in-out;
+    transition-delay: calc(var(--skillsDelay) * 1ms);
+  }
+</style>
 
 <div class="main">
   <div class="card px-6 pb-6 pt-2 mb-6 variant-soft-surface">
@@ -304,9 +333,9 @@
     </section>
   
   </div>
-  
-  <div class="card px-6 pb-6 pt-2 variant-soft-surface">
-    <header class="card-header flex justify-between">
+
+  <div class="card px-6 pt-2 variant-soft-surface">
+    <header class="card-header flex justify-between pb-4">
       <h1 class="h2">Skills</h1>
       <RadioGroup>
         <RadioItem on:change={() => sortSkills('stars')} bind:group={sortby} name="experience" value={'stars'}><IconStars width=24 height=24 /></RadioItem>
@@ -315,9 +344,10 @@
       </RadioGroup>
     </header>
     
-    <section class=" {'logo-cloud grid-cols-3 lg:grid-cols-6 gap-1 pt-4'} ">
+    <div class="skills-container" style='--skillsHeight:{skillsHeight}; --skillsDelay:{skillsDelay};'>
+       <section class="{'logo-cloud grid-cols-3 lg:grid-cols-6 gap-1 overflow-visible'}" bind:clientHeight={skillsHeight}>
       {#each skills as skill (skill) }
-        <div animate:flip={ {duration: 700, easing: quintInOut} } class="{skill.isCategory ? 'h4 col-span-3 lg:col-span-6' :'px-8 pt-4 pb-4 flex flex-col justify-center items-center variant-soft'}">
+        <div animate:flip={ {duration: 700, easing: quintInOut} } in:scale={ {delay: 300} } out:scale={ {duration: 600} } class="{skill.isCategory ? 'h4 col-span-3 lg:col-span-6' :'px-8 pt-4 pb-4 flex flex-col justify-center items-center variant-soft'}">
           <span class="mb-2">{skill.name}</span>
           {#if !skill.isCategory}
             <svelte:component this={skill.icon} width=48 height=48/>
@@ -331,8 +361,10 @@
         </div>
       {/each}
     </section>
+    </div>
+   
 
-    <div class="flex justify-center pt-4">
+    <footer class="card-footer flex justify-center pt-4" >
       <button on:click={() => toggleVerbose()} type="button" class="btn variant-filled px-6 py-3">
         {#if !showVerbose}
           Show More
@@ -340,7 +372,7 @@
           Show Less
         {/if}
       </button>
-    </div>
+    </footer>
   
   </div>
 </div>
