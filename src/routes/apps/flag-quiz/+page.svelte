@@ -73,6 +73,7 @@
   function getNextQuizFlag(){
     let rand = Math.floor(Math.random() * quizFlags.length);
     let newFlag = quizFlags[rand];
+    quizFlags.splice(rand, 1);
     return newFlag;
   }
 
