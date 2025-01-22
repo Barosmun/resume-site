@@ -108,11 +108,11 @@
     //   name: "node",
     //   stars: 2
     // },
-    {
-      icon: IconBrandJQuery,
-      name: "jquery",
-      stars: 2
-    },
+    // {
+    //   icon: IconBrandJQuery,
+    //   name: "jquery",
+    //   stars: 2
+    // },
     {
       icon: IconBrandReact,
       name: "react",
@@ -160,11 +160,11 @@
       name: "sql\xa0",
       stars: 1
     },
-    // {
-    //   icon: IconBrandMongodb,
-    //   name: "mongo",
-    //   stars: 1
-    // },
+    {
+      icon: IconBrandMongodb,
+      name: "mongo",
+      stars: 1
+    },
     // {
     //   icon: IconBrandCouchdb,
     //   name: "couchdb",
@@ -254,8 +254,7 @@
     </header>
   
     <section class="p-4">
-      I am a <b>Software Engineer</b>, <b>Web Developer</b>, and hobbyist <b>Game Developer</b> with {new Date().getFullYear() - 2020}+ years of professional experience.
-      
+      I am a <b>Software Engineer</b>, <b>Web Developer</b>, and hobbyist <b>Game Developer</b> with over {new Date().getFullYear() - 2020} years of professional experience.
     </section>
   
   </div>
