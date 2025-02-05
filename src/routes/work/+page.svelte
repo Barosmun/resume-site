@@ -5,6 +5,7 @@
   import IconBrandTypescript from '~icons/tabler/brand-typescript';
   import IconBrandBootstrap from '~icons/tabler/brand-bootstrap'
   import IconSql from '~icons/tabler/sql'
+  import IconBrandExpress from '~icons/simple-icons/express'
   // import IconBrandMssql from '~icons/simple-icons/microsoftsqlserver'
   import IconBrandAzure from '~icons/tabler/brand-azure';
 
@@ -30,6 +31,10 @@
     {
       icon: IconBrandBootstrap,
       name: "bootstrap",
+    },
+    {
+      icon: IconBrandExpress,
+      name: "express",
     },
     {
       icon: IconSql,
